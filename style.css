@@ -447,13 +447,16 @@ section > .container {
 
 /* ABOUT */
 
+
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 50px;
   align-items: center;
   width: 100%;
+  padding: 0 40px;
 }
+
 
 .about-grid > * {
   min-width: 0;
