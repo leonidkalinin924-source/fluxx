@@ -853,3 +853,82 @@ html {
     text-wrap: initial;
   }
 }
+
+/* THEME SWITCH */
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--card);
+  color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  font-size: 20px;
+  cursor: pointer;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg);
+  border-color: var(--blue);
+}
+ 
+/* LIGHT THEME */
+
+body.light-theme {
+  --bg: #f4f5fa;
+  --card: #ffffff;
+  --white: #171824;
+  --gray: #686a7b;
+  --border: rgba(0, 0, 0, .1);
+}
+
+body.light-theme #portfolio,
+body.light-theme #pricing {
+  background: #eceef5;
+}
+
+body.light-theme .project,
+body.light-theme .service-card,
+body.light-theme .price-card,
+body.light-theme .about-box {
+  background: #ffffff;
+}
+
+body.light-theme .project-image {
+  background: #e4e6ef;
+}
+
+body.light-theme .price-card.featured {
+  background: #f5f4ff;
+}
+
+body.light-theme .price-card li {
+  color: #555666;
+}
+
+body.light-theme #contact {
+  background: radial-gradient(
+    ellipse at center,
+    #e4e1ff 0%,
+    #f4f5fa 70%
+  );
+}
+
+body.light-theme .btn-outline:hover {
+  background: #00000008;
+}
+
+body.light-theme .hero::before {
+  opacity: .08;
+}
