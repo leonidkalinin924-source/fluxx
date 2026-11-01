@@ -327,7 +327,9 @@
 
 <!-- ANIMATIONS -->
 
-<script>
+
+/* ANIMATIONS */
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -337,8 +339,35 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+/* THEME SWITCH */
+
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('fluxx-theme');
+
+if (savedTheme === 'light') {
+  document.body.classList.add('light-theme');
+  themeToggle.textContent = '☾';
+} else {
+  themeToggle.textContent = '☀';
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+
+  const isLight = document.body.classList.contains('light-theme');
+
+  themeToggle.textContent = isLight ? '☾' : '☀';
+
+  localStorage.setItem(
+    'fluxx-theme',
+    isLight ? 'light' : 'dark'
+  );
+});
+
 
 </body>
 </html>
