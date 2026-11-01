@@ -884,23 +884,26 @@ html {
 }
  
 
+
 /* =================================
-   FLUXX — PREMIUM LIGHT THEME
+   FLUXX — WHITE & GOLD THEME
 ================================= */
 
 body.light-theme {
-  --bg: #f3f4f9;
+  --bg: #faf9f6;
   --card: #ffffff;
-  --white: #191a26;
-  --gray: #686a7c;
-  --border: rgba(30, 32, 55, .10);
+  --white: #24221b;
+  --gray: #817b6e;
+  --border: rgba(176, 140, 65, .20);
+
+  --blue: #b89545;
 }
 
 /* Основные секции */
 
 body.light-theme #portfolio,
 body.light-theme #pricing {
-  background: #e9eaf2;
+  background: #f1eee6;
 }
 
 /* Карточки */
@@ -909,9 +912,15 @@ body.light-theme .project,
 body.light-theme .service-card,
 body.light-theme .price-card,
 body.light-theme .about-box {
-  background: #ffffff;
-  border-color: rgba(30, 32, 55, .09);
-  box-shadow: 0 8px 30px rgba(25, 26, 45, .035);
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #fdfcf9
+  );
+
+  border-color: rgba(184, 149, 69, .22);
+
+  box-shadow: 0 8px 30px rgba(120, 95, 40, .045);
 }
 
 /* Популярный тариф */
@@ -919,50 +928,76 @@ body.light-theme .about-box {
 body.light-theme .price-card.featured {
   background: linear-gradient(
     145deg,
-    #f0efff,
+    #fff9e9,
     #ffffff 75%
   );
 
-  border-color: #6865ff;
-  box-shadow: 0 10px 35px rgba(104, 101, 255, .10);
+  border-color: #c6a45e;
+
+  box-shadow: 0 10px 35px rgba(184, 149, 69, .13);
 }
 
 /* Изображения */
 
 body.light-theme .project-image {
-  background: #e5e6ee;
+  background: #f0ece2;
 }
 
 /* Текст тарифов */
 
 body.light-theme .price-card li {
-  color: #55576a;
+  color: #696354;
 }
 
 /* Кнопки */
 
+body.light-theme .btn-primary,
+body.light-theme .nav-btn {
+  background: linear-gradient(
+    135deg,
+    #c8a75e,
+    #a98536
+  );
+
+  color: #ffffff;
+}
+
+body.light-theme .btn-primary:hover,
+body.light-theme .nav-btn:hover {
+  box-shadow: 0 10px 30px rgba(184, 149, 69, .25);
+}
+
+/* Контурные кнопки */
+
 body.light-theme .btn-outline {
-  border-color: rgba(30, 32, 55, .15);
-  color: #191a26;
+  border-color: rgba(176, 140, 65, .35);
+  color: #383124;
 }
 
 body.light-theme .btn-outline:hover {
-  background: #6865ff0d;
-  border-color: #6865ff;
+  background: rgba(184, 149, 69, .07);
+  border-color: #b89545;
 }
 
 /* Шапка */
 
 body.light-theme header {
-  background: rgba(243, 244, 249, .88);
-  border-color: rgba(30, 32, 55, .08);
+  background: rgba(250, 249, 246, .90);
+  border-color: rgba(176, 140, 65, .18);
+}
+
+/* Логотип */
+
+body.light-theme .logo span {
+  color: #b89545;
+  text-shadow: 0 0 15px rgba(184, 149, 69, .20);
 }
 
 /* Фоновое свечение */
 
 body.light-theme .hero::before {
-  background: #6865ff;
-  opacity: .10;
+  background: #d8bd80;
+  opacity: .13;
 }
 
 /* Контакты */
@@ -970,8 +1005,8 @@ body.light-theme .hero::before {
 body.light-theme #contact {
   background: radial-gradient(
     ellipse at center,
-    #e3e0ff 0%,
-    #f3f4f9 75%
+    #f5ead0 0%,
+    #faf9f6 75%
   );
 }
 
@@ -979,18 +1014,33 @@ body.light-theme #contact {
 
 body.light-theme .theme-toggle {
   background: #ffffff;
-  color: #191a26;
-  border-color: rgba(30, 32, 55, .12);
+  color: #b89545;
+  border-color: rgba(176, 140, 65, .30);
 }
 
-/* Выделение ссылок */
+/* Ссылки проектов */
 
 body.light-theme .project-link:hover {
-  color: #5552e8;
+  color: #a98536;
+}
+
+/* Номера услуг */
+
+body.light-theme .service-number {
+  color: #b89545;
+}
+
+/* Метки секций */
+
+body.light-theme .section-label,
+body.light-theme .price-tag,
+body.light-theme .project-type {
+  color: #a98536;
 }
 
 /* Футер */
 
 body.light-theme footer {
-  border-color: rgba(30, 32, 55, .10);
+  border-color: rgba(176, 140, 65, .18);
 }
+
