@@ -1044,3 +1044,141 @@ body.light-theme footer {
   border-color: rgba(176, 140, 65, .18);
 }
 
+
+/* =================================
+   FLUXX — PROJECT ORDER FORM
+================================= */
+
+.project-form {
+  max-width: 720px;
+  margin: 45px auto 0;
+  padding: 35px;
+  text-align: left;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .10);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  color: var(--white);
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+  border-radius: 9px;
+
+  outline: none;
+  transition: border .25s, box-shadow .25s;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: var(--card);
+  color: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(104, 101, 255, .10);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--gray);
+  opacity: .7;
+}
+
+.form-submit {
+  width: 100%;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.form-note {
+  text-align: center;
+  color: var(--gray);
+  font-size: 11px;
+  margin-top: 15px;
+  line-height: 1.7;
+}
+
+/* Светлая тема формы */
+
+body.light-theme .project-form {
+  background: #ffffff;
+  border-color: rgba(176, 140, 65, .25);
+  box-shadow: 0 20px 60px rgba(120, 95, 40, .08);
+}
+
+body.light-theme .form-group input,
+body.light-theme .form-group select,
+body.light-theme .form-group textarea {
+  background: #faf9f6;
+  color: #24221b;
+  border-color: rgba(176, 140, 65, .22);
+}
+
+body.light-theme .form-group label {
+  color: #383124;
+}
+
+body.light-theme .form-group select option {
+  background: #ffffff;
+  color: #24221b;
+}
+
+/* Мобильная форма */
+
+@media (max-width: 600px) {
+  .project-form {
+    padding: 22px;
+    margin-top: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
