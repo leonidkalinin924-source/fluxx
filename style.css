@@ -709,3 +709,147 @@ footer p {
     text-align: center;
   }
 }
+
+/* =================================
+   FLUXX — NEXT LEVEL DESIGN
+================================= */
+
+/* Стеклянная шапка */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8, 9, 13, .82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background .3s ease;
+}
+
+/* Логотип */
+
+.logo {
+  transition: transform .3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.04);
+}
+
+.logo span {
+  text-shadow: 0 0 18px rgba(104, 101, 255, .6);
+}
+
+/* Карточки проектов */
+
+.project {
+  background: linear-gradient(
+    145deg,
+    #12141d,
+    #0e1017
+  );
+}
+
+.project-info {
+  position: relative;
+}
+
+/* Тип проекта */
+
+.project-type {
+  display: inline-block;
+  padding: 6px 10px;
+  background: rgba(104, 101, 255, .08);
+  border: 1px solid rgba(104, 101, 255, .15);
+  border-radius: 5px;
+}
+
+/* Ссылка проекта */
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: color .25s ease, gap .25s ease;
+}
+
+.project-link:hover {
+  gap: 12px;
+}
+
+/* Карточки услуг */
+
+.service-card {
+  background: linear-gradient(
+    145deg,
+    rgba(18, 20, 30, .95),
+    rgba(12, 13, 19, .98)
+  );
+}
+
+/* Цены */
+
+.price-card {
+  background: linear-gradient(
+    145deg,
+    #12141c,
+    #0d0e14
+  );
+}
+
+.price-card.featured {
+  background: linear-gradient(
+    145deg,
+    rgba(104, 101, 255, .09),
+    #10121a 60%
+  );
+}
+
+/* Заголовки секций */
+
+.section-title {
+  text-wrap: balance;
+}
+
+/* Аккуратные выделения */
+
+.section-description {
+  text-wrap: pretty;
+}
+
+/* Контактный блок */
+
+#contact .section-title {
+  text-shadow: 0 0 35px rgba(104, 101, 255, .08);
+}
+
+#contact .btn-primary {
+  box-shadow: 0 0 25px rgba(104, 101, 255, .12);
+}
+
+#contact .btn-primary:hover {
+  box-shadow: 0 0 40px rgba(104, 101, 255, .3);
+}
+
+/* Плавная прокрутка */
+
+html {
+  scroll-padding-top: 100px;
+}
+
+/* Мобильная шапка */
+
+@media (max-width: 700px) {
+  header {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .project-type {
+    font-size: 10px;
+  }
+
+  .section-title {
+    text-wrap: initial;
+  }
+}
