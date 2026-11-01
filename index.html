@@ -15,8 +15,6 @@
 
 <body>
 
-<!-- HEADER -->
-
 <header>
   <nav class="container">
     <a href="#home" class="logo">FLUXX<span>.</span></a>
@@ -29,9 +27,10 @@
     </div>
 
     <a href="#contact" class="nav-btn">Обсудить проект ↗</a>
+
     <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
-  ☀
-</button>
+      ☀
+    </button>
   </nav>
 </header>
 
@@ -280,7 +279,6 @@
       </div>
 
     </div>
-
   </div>
 </section>
 
@@ -325,10 +323,10 @@
   </div>
 </footer>
 
-<!-- ANIMATIONS -->
+<!-- ANIMATIONS + THEME SWITCH -->
 
-
-/* ANIMATIONS */
+<script>
+/* REVEAL ANIMATIONS */
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -346,28 +344,31 @@ document.querySelectorAll('.reveal').forEach(el => {
 /* THEME SWITCH */
 
 const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('fluxx-theme');
 
-if (savedTheme === 'light') {
-  document.body.classList.add('light-theme');
-  themeToggle.textContent = '☾';
-} else {
-  themeToggle.textContent = '☀';
+if (themeToggle) {
+  const savedTheme = localStorage.getItem('fluxx-theme');
+
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeToggle.textContent = '☾';
+  } else {
+    themeToggle.textContent = '☀';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+
+    const isLight = document.body.classList.contains('light-theme');
+
+    themeToggle.textContent = isLight ? '☾' : '☀';
+
+    localStorage.setItem(
+      'fluxx-theme',
+      isLight ? 'light' : 'dark'
+    );
+  });
 }
-
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-
-  const isLight = document.body.classList.contains('light-theme');
-
-  themeToggle.textContent = isLight ? '☾' : '☀';
-
-  localStorage.setItem(
-    'fluxx-theme',
-    isLight ? 'light' : 'dark'
-  );
-});
-
+</script>
 
 </body>
 </html>
