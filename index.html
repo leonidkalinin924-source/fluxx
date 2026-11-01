@@ -282,6 +282,7 @@
   </div>
 </section>
 
+
 <!-- CONTACT -->
 
 <section id="contact">
@@ -295,17 +296,59 @@
     </h2>
 
     <p class="section-description">
-      Расскажи о своей идее — обсудим детали, подберём формат
-      и превратим её в полноценный сайт.
+      Заполни небольшую форму, и мы обсудим твой проект.
     </p>
 
-    <div class="hero-buttons">
-      <a href="https://t.me/bubkababki" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Написать в Telegram ↗</a>
-      <a href="#portfolio" class="btn btn-outline">Мои проекты</a>
-    </div>
+    <form class="project-form" id="projectForm">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="clientName">Как тебя зовут?</label>
+          <input type="text" id="clientName" placeholder="Твоё имя" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientType">Какой сайт нужен?</label>
+          <select id="clientType" required>
+            <option value="" disabled selected>Выбери тип сайта</option>
+            <option>Landing Page</option>
+            <option>Сайт для бизнеса</option>
+            <option>Интернет-магазин</option>
+            <option>Индивидуальный проект</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="clientBudget">Планируемый бюджет</label>
+        <select id="clientBudget" required>
+          <option value="" disabled selected>Выбери бюджет</option>
+          <option>4 000 – 8 000 ₽</option>
+          <option>8 000 – 15 000 ₽</option>
+          <option>15 000 – 30 000 ₽</option>
+          <option>Более 30 000 ₽</option>
+          <option>Пока не определился</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="clientMessage">Расскажи о своей идее</label>
+        <textarea id="clientMessage" rows="4" placeholder="Какой сайт хочешь? Что на нём должно быть?"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary form-submit">
+        Обсудить проект в Telegram ↗
+      </button>
+
+      <p class="form-note">
+        После нажатия откроется Telegram с подготовленной заявкой.
+      </p>
+
+    </form>
 
   </div>
 </section>
+
 
 </main>
 
