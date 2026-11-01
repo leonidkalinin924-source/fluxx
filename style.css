@@ -883,52 +883,114 @@ html {
   border-color: var(--blue);
 }
  
-/* LIGHT THEME */
+
+/* =================================
+   FLUXX — PREMIUM LIGHT THEME
+================================= */
 
 body.light-theme {
-  --bg: #f4f5fa;
+  --bg: #f3f4f9;
   --card: #ffffff;
-  --white: #171824;
-  --gray: #686a7b;
-  --border: rgba(0, 0, 0, .1);
+  --white: #191a26;
+  --gray: #686a7c;
+  --border: rgba(30, 32, 55, .10);
 }
+
+/* Основные секции */
 
 body.light-theme #portfolio,
 body.light-theme #pricing {
-  background: #eceef5;
+  background: #e9eaf2;
 }
+
+/* Карточки */
 
 body.light-theme .project,
 body.light-theme .service-card,
 body.light-theme .price-card,
 body.light-theme .about-box {
   background: #ffffff;
+  border-color: rgba(30, 32, 55, .09);
+  box-shadow: 0 8px 30px rgba(25, 26, 45, .035);
 }
 
-body.light-theme .project-image {
-  background: #e4e6ef;
-}
+/* Популярный тариф */
 
 body.light-theme .price-card.featured {
-  background: #f5f4ff;
+  background: linear-gradient(
+    145deg,
+    #f0efff,
+    #ffffff 75%
+  );
+
+  border-color: #6865ff;
+  box-shadow: 0 10px 35px rgba(104, 101, 255, .10);
 }
 
-body.light-theme .price-card li {
-  color: #555666;
+/* Изображения */
+
+body.light-theme .project-image {
+  background: #e5e6ee;
 }
+
+/* Текст тарифов */
+
+body.light-theme .price-card li {
+  color: #55576a;
+}
+
+/* Кнопки */
+
+body.light-theme .btn-outline {
+  border-color: rgba(30, 32, 55, .15);
+  color: #191a26;
+}
+
+body.light-theme .btn-outline:hover {
+  background: #6865ff0d;
+  border-color: #6865ff;
+}
+
+/* Шапка */
+
+body.light-theme header {
+  background: rgba(243, 244, 249, .88);
+  border-color: rgba(30, 32, 55, .08);
+}
+
+/* Фоновое свечение */
+
+body.light-theme .hero::before {
+  background: #6865ff;
+  opacity: .10;
+}
+
+/* Контакты */
 
 body.light-theme #contact {
   background: radial-gradient(
     ellipse at center,
-    #e4e1ff 0%,
-    #f4f5fa 70%
+    #e3e0ff 0%,
+    #f3f4f9 75%
   );
 }
 
-body.light-theme .btn-outline:hover {
-  background: #00000008;
+/* Переключатель темы */
+
+body.light-theme .theme-toggle {
+  background: #ffffff;
+  color: #191a26;
+  border-color: rgba(30, 32, 55, .12);
 }
 
-body.light-theme .hero::before {
-  opacity: .08;
+/* Выделение ссылок */
+
+body.light-theme .project-link:hover {
+  color: #5552e8;
+}
+
+/* Футер */
+
+body.light-theme footer {
+  border-color: rgba(30, 32, 55, .10);
 }
