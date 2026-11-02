@@ -436,7 +436,7 @@ section > .container {
 }
 
 .price-card li::before {
-  content: "✓";
+  content: "вњ“";
   color: var(--blue);
   margin-right: 10px;
 }
@@ -711,10 +711,10 @@ footer p {
 }
 
 /* =================================
-   FLUXX — NEXT LEVEL DESIGN
+   FLUXX вЂ” NEXT LEVEL DESIGN
 ================================= */
 
-/* Стеклянная шапка */
+/* РЎС‚РµРєР»СЏРЅРЅР°СЏ С€Р°РїРєР° */
 
 header {
   position: sticky;
@@ -726,7 +726,7 @@ header {
   transition: background .3s ease;
 }
 
-/* Логотип */
+/* Р›РѕРіРѕС‚РёРї */
 
 .logo {
   transition: transform .3s ease;
@@ -740,7 +740,7 @@ header {
   text-shadow: 0 0 18px rgba(104, 101, 255, .6);
 }
 
-/* Карточки проектов */
+/* РљР°СЂС‚РѕС‡РєРё РїСЂРѕРµРєС‚РѕРІ */
 
 .project {
   background: linear-gradient(
@@ -754,7 +754,7 @@ header {
   position: relative;
 }
 
-/* Тип проекта */
+/* РўРёРї РїСЂРѕРµРєС‚Р° */
 
 .project-type {
   display: inline-block;
@@ -764,7 +764,7 @@ header {
   border-radius: 5px;
 }
 
-/* Ссылка проекта */
+/* РЎСЃС‹Р»РєР° РїСЂРѕРµРєС‚Р° */
 
 .project-link {
   display: inline-flex;
@@ -777,7 +777,7 @@ header {
   gap: 12px;
 }
 
-/* Карточки услуг */
+/* РљР°СЂС‚РѕС‡РєРё СѓСЃР»СѓРі */
 
 .service-card {
   background: linear-gradient(
@@ -787,7 +787,7 @@ header {
   );
 }
 
-/* Цены */
+/* Р¦РµРЅС‹ */
 
 .price-card {
   background: linear-gradient(
@@ -805,19 +805,19 @@ header {
   );
 }
 
-/* Заголовки секций */
+/* Р—Р°РіРѕР»РѕРІРєРё СЃРµРєС†РёР№ */
 
 .section-title {
   text-wrap: balance;
 }
 
-/* Аккуратные выделения */
+/* РђРєРєСѓСЂР°С‚РЅС‹Рµ РІС‹РґРµР»РµРЅРёСЏ */
 
 .section-description {
   text-wrap: pretty;
 }
 
-/* Контактный блок */
+/* РљРѕРЅС‚Р°РєС‚РЅС‹Р№ Р±Р»РѕРє */
 
 #contact .section-title {
   text-shadow: 0 0 35px rgba(104, 101, 255, .08);
@@ -831,13 +831,13 @@ header {
   box-shadow: 0 0 40px rgba(104, 101, 255, .3);
 }
 
-/* Плавная прокрутка */
+/* РџР»Р°РІРЅР°СЏ РїСЂРѕРєСЂСѓС‚РєР° */
 
 html {
   scroll-padding-top: 100px;
 }
 
-/* Мобильная шапка */
+/* РњРѕР±РёР»СЊРЅР°СЏ С€Р°РїРєР° */
 
 @media (max-width: 700px) {
   header {
@@ -886,7 +886,7 @@ html {
 
 
 /* =================================
-   FLUXX — WHITE & GOLD THEME
+   FLUXX вЂ” WHITE & GOLD THEME
 ================================= */
 
 body.light-theme {
@@ -899,14 +899,14 @@ body.light-theme {
   --blue: #b89545;
 }
 
-/* Основные секции */
+/* РћСЃРЅРѕРІРЅС‹Рµ СЃРµРєС†РёРё */
 
 body.light-theme #portfolio,
 body.light-theme #pricing {
   background: #f1eee6;
 }
 
-/* Карточки */
+/* РљР°СЂС‚РѕС‡РєРё */
 
 body.light-theme .project,
 body.light-theme .service-card,
@@ -923,7 +923,7 @@ body.light-theme .about-box {
   box-shadow: 0 8px 30px rgba(120, 95, 40, .045);
 }
 
-/* Популярный тариф */
+/* РџРѕРїСѓР»СЏСЂРЅС‹Р№ С‚Р°СЂРёС„ */
 
 body.light-theme .price-card.featured {
   background: linear-gradient(
@@ -937,19 +937,19 @@ body.light-theme .price-card.featured {
   box-shadow: 0 10px 35px rgba(184, 149, 69, .13);
 }
 
-/* Изображения */
+/* РР·РѕР±СЂР°Р¶РµРЅРёСЏ */
 
 body.light-theme .project-image {
   background: #f0ece2;
 }
 
-/* Текст тарифов */
+/* РўРµРєСЃС‚ С‚Р°СЂРёС„РѕРІ */
 
 body.light-theme .price-card li {
   color: #696354;
 }
 
-/* Кнопки */
+/* РљРЅРѕРїРєРё */
 
 body.light-theme .btn-primary,
 body.light-theme .nav-btn {
@@ -967,7 +967,7 @@ body.light-theme .nav-btn:hover {
   box-shadow: 0 10px 30px rgba(184, 149, 69, .25);
 }
 
-/* Контурные кнопки */
+/* РљРѕРЅС‚СѓСЂРЅС‹Рµ РєРЅРѕРїРєРё */
 
 body.light-theme .btn-outline {
   border-color: rgba(176, 140, 65, .35);
@@ -979,28 +979,28 @@ body.light-theme .btn-outline:hover {
   border-color: #b89545;
 }
 
-/* Шапка */
+/* РЁР°РїРєР° */
 
 body.light-theme header {
   background: rgba(250, 249, 246, .90);
   border-color: rgba(176, 140, 65, .18);
 }
 
-/* Логотип */
+/* Р›РѕРіРѕС‚РёРї */
 
 body.light-theme .logo span {
   color: #b89545;
   text-shadow: 0 0 15px rgba(184, 149, 69, .20);
 }
 
-/* Фоновое свечение */
+/* Р¤РѕРЅРѕРІРѕРµ СЃРІРµС‡РµРЅРёРµ */
 
 body.light-theme .hero::before {
   background: #d8bd80;
   opacity: .13;
 }
 
-/* Контакты */
+/* РљРѕРЅС‚Р°РєС‚С‹ */
 
 body.light-theme #contact {
   background: radial-gradient(
@@ -1010,7 +1010,7 @@ body.light-theme #contact {
   );
 }
 
-/* Переключатель темы */
+/* РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ С‚РµРјС‹ */
 
 body.light-theme .theme-toggle {
   background: #ffffff;
@@ -1018,19 +1018,19 @@ body.light-theme .theme-toggle {
   border-color: rgba(176, 140, 65, .30);
 }
 
-/* Ссылки проектов */
+/* РЎСЃС‹Р»РєРё РїСЂРѕРµРєС‚РѕРІ */
 
 body.light-theme .project-link:hover {
   color: #a98536;
 }
 
-/* Номера услуг */
+/* РќРѕРјРµСЂР° СѓСЃР»СѓРі */
 
 body.light-theme .service-number {
   color: #b89545;
 }
 
-/* Метки секций */
+/* РњРµС‚РєРё СЃРµРєС†РёР№ */
 
 body.light-theme .section-label,
 body.light-theme .price-tag,
@@ -1038,7 +1038,7 @@ body.light-theme .project-type {
   color: #a98536;
 }
 
-/* Футер */
+/* Р¤СѓС‚РµСЂ */
 
 body.light-theme footer {
   border-color: rgba(176, 140, 65, .18);
@@ -1046,7 +1046,7 @@ body.light-theme footer {
 
 
 /* =================================
-   FLUXX — PROJECT ORDER FORM
+   FLUXX вЂ” PROJECT ORDER FORM
 ================================= */
 
 .project-form {
@@ -1143,7 +1143,7 @@ body.light-theme footer {
   line-height: 1.7;
 }
 
-/* Светлая тема формы */
+/* РЎРІРµС‚Р»Р°СЏ С‚РµРјР° С„РѕСЂРјС‹ */
 
 body.light-theme .project-form {
   background: #ffffff;
@@ -1168,7 +1168,7 @@ body.light-theme .form-group select option {
   color: #24221b;
 }
 
-/* Мобильная форма */
+/* РњРѕР±РёР»СЊРЅР°СЏ С„РѕСЂРјР° */
 
 @media (max-width: 600px) {
   .project-form {
@@ -1184,10 +1184,10 @@ body.light-theme .form-group select option {
 
 
 /* =================================
-   FLUXX — PREMIUM CARD EFFECTS
+   FLUXX вЂ” PREMIUM CARD EFFECTS
 ================================= */
 
-/* Карточки проектов */
+/* РљР°СЂС‚РѕС‡РєРё РїСЂРѕРµРєС‚РѕРІ */
 
 .project {
   position: relative;
@@ -1216,7 +1216,7 @@ body.light-theme .form-group select option {
   transform: scale(1.07);
 }
 
-/* Карточки услуг */
+/* РљР°СЂС‚РѕС‡РєРё СѓСЃР»СѓРі */
 
 .service-card {
   position: relative;
@@ -1233,7 +1233,7 @@ body.light-theme .form-group select option {
   box-shadow: 0 15px 40px rgba(104, 101, 255, .10);
 }
 
-/* Карточки цен */
+/* РљР°СЂС‚РѕС‡РєРё С†РµРЅ */
 
 .price-card {
   transition:
@@ -1253,7 +1253,7 @@ body.light-theme .form-group select option {
   box-shadow: 0 18px 45px rgba(104, 101, 255, .18);
 }
 
-/* Кнопки */
+/* РљРЅРѕРїРєРё */
 
 .btn,
 .nav-btn {
@@ -1272,7 +1272,7 @@ body.light-theme .form-group select option {
   transform: translateY(-3px);
 }
 
-/* Светлая тема — золотое свечение */
+/* РЎРІРµС‚Р»Р°СЏ С‚РµРјР° вЂ” Р·РѕР»РѕС‚РѕРµ СЃРІРµС‡РµРЅРёРµ */
 
 body.light-theme .project:hover {
   border-color: rgba(184, 149, 69, .65);
@@ -1289,7 +1289,7 @@ body.light-theme .price-card:hover {
   box-shadow: 0 15px 40px rgba(184, 149, 69, .12);
 }
 
-/* Уважаем настройки уменьшения анимации */
+/* РЈРІР°Р¶Р°РµРј РЅР°СЃС‚СЂРѕР№РєРё СѓРјРµРЅСЊС€РµРЅРёСЏ Р°РЅРёРјР°С†РёРё */
 
 @media (prefers-reduced-motion: reduce) {
   .project,
@@ -1302,7 +1302,7 @@ body.light-theme .price-card:hover {
   }
 }
 
-/* На телефонах убираем подъём при наведении */
+/* РќР° С‚РµР»РµС„РѕРЅР°С… СѓР±РёСЂР°РµРј РїРѕРґСЉС‘Рј РїСЂРё РЅР°РІРµРґРµРЅРёРё */
 
 @media (hover: none) {
   .project:hover,
@@ -1318,7 +1318,7 @@ body.light-theme .price-card:hover {
   }
 }
 
-/* FLUXX — PRICE CARDS HOVER */
+/* FLUXX вЂ” PRICE CARDS HOVER */
 
 #pricing .price-card {
   position: relative;
@@ -1329,12 +1329,12 @@ body.light-theme .price-card:hover {
   will-change: transform;
 }
 
-/* Подъём карточки */
+/* РџРѕРґСЉС‘Рј РєР°СЂС‚РѕС‡РєРё */
 #pricing .price-card:hover {
   transform: translateY(-10px);
 }
 
-/* Свечение в тёмной теме */
+/* РЎРІРµС‡РµРЅРёРµ РІ С‚С‘РјРЅРѕР№ С‚РµРјРµ */
 #pricing .price-card:hover {
   box-shadow:
     0 0 25px rgba(155, 92, 255, 0.22),
@@ -1342,7 +1342,7 @@ body.light-theme .price-card:hover {
   border-color: rgba(155, 92, 255, 0.65);
 }
 
-/* Средняя карточка */
+/* РЎСЂРµРґРЅСЏСЏ РєР°СЂС‚РѕС‡РєР° */
 #pricing .price-card.featured:hover {
   transform: translateY(-12px);
   box-shadow:
@@ -1350,7 +1350,7 @@ body.light-theme .price-card:hover {
     0 20px 55px rgba(155, 92, 255, 0.18);
 }
 
-/* Светлая тема — золотое свечение */
+/* РЎРІРµС‚Р»Р°СЏ С‚РµРјР° вЂ” Р·РѕР»РѕС‚РѕРµ СЃРІРµС‡РµРЅРёРµ */
 body.light-theme #pricing .price-card:hover {
   box-shadow:
     0 0 25px rgba(190, 150, 60, 0.22),
@@ -1364,7 +1364,7 @@ body.light-theme #pricing .price-card.featured:hover {
     0 20px 55px rgba(190, 150, 60, 0.15);
 }
 
-/* Телефоны — без прыжков */
+/* РўРµР»РµС„РѕРЅС‹ вЂ” Р±РµР· РїСЂС‹Р¶РєРѕРІ */
 @media (hover: none) {
   #pricing .price-card:hover {
     transform: none;
@@ -1372,9 +1372,9 @@ body.light-theme #pricing .price-card.featured:hover {
   }
 }
 
-/* FLUXX — CUSTOM CURSOR */
+/* FLUXX вЂ” CUSTOM CURSOR */
 
-/* Скрываем стандартный курсор на компьютере */
+/* РЎРєСЂС‹РІР°РµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєСѓСЂСЃРѕСЂ РЅР° РєРѕРјРїСЊСЋС‚РµСЂРµ */
 @media (hover: hover) and (pointer: fine) {
   body,
   a,
@@ -1433,7 +1433,7 @@ body.light-theme #pricing .price-card.featured:hover {
   }
 }
 
-/* Отключаем на телефонах */
+/* РћС‚РєР»СЋС‡Р°РµРј РЅР° С‚РµР»РµС„РѕРЅР°С… */
 @media (hover: none), (pointer: coarse) {
   .fluxx-cursor,
   .fluxx-cursor-ring {
@@ -1442,10 +1442,10 @@ body.light-theme #pricing .price-card.featured:hover {
 }
 
 /* =================================
-   FLUXX — INTERACTIVE PORTFOLIO
+   FLUXX вЂ” INTERACTIVE PORTFOLIO
 ================================= */
 
-/* Карточка проекта */
+/* РљР°СЂС‚РѕС‡РєР° РїСЂРѕРµРєС‚Р° */
 #portfolio .project {
   position: relative;
   overflow: hidden;
@@ -1456,7 +1456,7 @@ body.light-theme #pricing .price-card.featured:hover {
     border-color 0.4s ease;
 }
 
-/* Поднимаем карточку */
+/* РџРѕРґРЅРёРјР°РµРј РєР°СЂС‚РѕС‡РєСѓ */
 #portfolio .project:hover {
   transform: translateY(-10px);
   box-shadow:
@@ -1464,25 +1464,25 @@ body.light-theme #pricing .price-card.featured:hover {
     0 0 25px rgba(155, 92, 255, 0.12);
 }
 
-/* Изображение */
+/* РР·РѕР±СЂР°Р¶РµРЅРёРµ */
 #portfolio .project-image {
   overflow: hidden;
 }
 
-/* Плавное приближение */
+/* РџР»Р°РІРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ */
 #portfolio .project-image img {
   transition:
     transform 0.7s cubic-bezier(.2,.8,.2,1),
     filter 0.5s ease;
 }
 
-/* Наведение на картинку */
+/* РќР°РІРµРґРµРЅРёРµ РЅР° РєР°СЂС‚РёРЅРєСѓ */
 #portfolio .project:hover .project-image img {
   transform: scale(1.08);
   filter: brightness(1.08);
 }
 
-/* Информация */
+/* РРЅС„РѕСЂРјР°С†РёСЏ */
 #portfolio .project-info {
   transition: transform 0.4s ease;
 }
@@ -1491,7 +1491,7 @@ body.light-theme #pricing .price-card.featured:hover {
   transform: translateY(-3px);
 }
 
-/* Ссылка на проект */
+/* РЎСЃС‹Р»РєР° РЅР° РїСЂРѕРµРєС‚ */
 #portfolio .project-link {
   display: inline-block;
   transition:
@@ -1506,14 +1506,14 @@ body.light-theme #pricing .price-card.featured:hover {
   color: var(--blue);
 }
 
-/* Светлая тема */
+/* РЎРІРµС‚Р»Р°СЏ С‚РµРјР° */
 body.light-theme #portfolio .project:hover {
   box-shadow:
     0 15px 45px rgba(190, 150, 60, 0.18),
     0 0 25px rgba(190, 150, 60, 0.12);
 }
 
-/* Мобильные устройства */
+/* РњРѕР±РёР»СЊРЅС‹Рµ СѓСЃС‚СЂРѕР№СЃС‚РІР° */
 @media (hover: none) {
   #portfolio .project:hover {
     transform: none;
@@ -1530,7 +1530,7 @@ body.light-theme #portfolio .project:hover {
   }
 }
 
-/* Учитываем настройки уменьшения анимации */
+/* РЈС‡РёС‚С‹РІР°РµРј РЅР°СЃС‚СЂРѕР№РєРё СѓРјРµРЅСЊС€РµРЅРёСЏ Р°РЅРёРјР°С†РёРё */
 @media (prefers-reduced-motion: reduce) {
   #portfolio .project,
   #portfolio .project-image img,
@@ -1541,7 +1541,7 @@ body.light-theme #portfolio .project:hover {
 }
 
 
-/* FLUXX — VIEW PROJECT FIX */
+/* FLUXX вЂ” VIEW PROJECT FIX */
 
 #portfolio .project-image {
   position: relative !important;
@@ -1554,7 +1554,7 @@ body.light-theme #portfolio .project:hover {
   transition: transform 0.6s ease, filter 0.4s ease;
 }
 
-/* Затемнение фотографии */
+/* Р—Р°С‚РµРјРЅРµРЅРёРµ С„РѕС‚РѕРіСЂР°С„РёРё */
 #portfolio .project-image .view-overlay {
   position: absolute;
   inset: 0;
@@ -1572,7 +1572,7 @@ body.light-theme #portfolio .project:hover {
   pointer-events: none;
 }
 
-/* Стеклянная надпись */
+/* РЎС‚РµРєР»СЏРЅРЅР°СЏ РЅР°РґРїРёСЃСЊ */
 #portfolio .project-image .view-overlay span {
   padding: 15px 25px;
 
@@ -1591,7 +1591,7 @@ body.light-theme #portfolio .project:hover {
   transition: transform 0.35s ease;
 }
 
-/* Появление */
+/* РџРѕСЏРІР»РµРЅРёРµ */
 #portfolio .project:hover .view-overlay {
   opacity: 1;
 }
@@ -1605,14 +1605,235 @@ body.light-theme #portfolio .project:hover {
   filter: brightness(0.75);
 }
 
-/* Светлая тема */
+/* РЎРІРµС‚Р»Р°СЏ С‚РµРјР° */
 body.light-theme #portfolio .project-image .view-overlay {
   background: rgba(20, 20, 20, 0.45);
 }
 
-/* Телефоны */
+/* РўРµР»РµС„РѕРЅС‹ */
 @media (hover: none) {
   #portfolio .project-image .view-overlay {
     display: none;
+  }
+}
+
+/* ==========================================
+   FLUXX PREMIUM UPDATE
+   ========================================== */
+
+/* PRELOADER */
+.fluxx-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #08090d;
+  color: #f5f5fa;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+.loader-logo {
+  font-size: clamp(42px, 8vw, 90px);
+  font-weight: 800;
+  letter-spacing: -5px;
+}
+.loader-logo span { color: #6865ff; }
+.loader-line {
+  width: 140px;
+  height: 2px;
+  margin: 25px 0;
+  background: #22232e;
+  overflow: hidden;
+  position: relative;
+}
+.loader-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #6865ff;
+  animation: loaderProgress 1.2s ease forwards;
+}
+.fluxx-loader p {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #9092a3;
+}
+.loader-hidden { opacity: 0; visibility: hidden; }
+@keyframes loaderProgress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* HERO BACKGROUND */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 700px;
+  height: 700px;
+  top: -180px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(104,101,255,.20) 0%, rgba(104,101,255,.07) 35%, transparent 70%);
+  filter: blur(40px);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 400px;
+  height: 400px;
+  left: -180px;
+  bottom: -100px;
+  background: radial-gradient(circle, rgba(104,101,255,.12), transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+@keyframes heroGlow {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(-40px,50px) scale(1.15); }
+}
+
+/* HERO ENTRANCE */
+.hero-animated h1 { animation: heroTitle 1s cubic-bezier(.2,.8,.2,1) both; }
+.hero-animated .eyebrow { animation: heroTitle .7s ease both; }
+.hero-animated .hero-text { animation: heroTitle 1s ease .2s both; }
+.hero-animated .hero-buttons { animation: heroTitle 1s ease .35s both; }
+.hero-animated .hero-note { animation: heroTitle 1s ease .5s both; }
+@keyframes heroTitle {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PROJECT DETAILS */
+.project { position: relative; cursor: pointer; transition: transform .4s ease, border-color .4s ease; }
+.project:hover { transform: translateY(-8px); }
+.project-info { position: relative; z-index: 2; }
+.project-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(12px);
+  transition: max-height .5s ease, opacity .4s ease, transform .4s ease, margin .4s ease;
+}
+.project-expanded .project-details {
+  max-height: 240px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 18px;
+}
+.project-details > span {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.project-details p { font-size: 13px; line-height: 1.8; color: var(--gray); margin-bottom: 14px; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; }
+.project-tech span {
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--gray);
+}
+
+/* CURSOR GLOW */
+.fluxx-cursor {
+  box-shadow: 0 0 15px rgba(104,101,255,.5);
+  transition: width .25s ease, height .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.fluxx-cursor-ring {
+  box-shadow: 0 0 30px rgba(104,101,255,.12);
+  transition: width .3s ease, height .3s ease, border-color .3s ease, background .3s ease;
+}
+.fluxx-cursor.hover { box-shadow: 0 0 25px rgba(104,101,255,.8); }
+.fluxx-cursor-ring.hover { background: rgba(104,101,255,.06); border-color: rgba(104,101,255,.8); }
+
+/* LIGHT THEME вЂ” POLISHED */
+body.light-theme {
+  --bg: #f5f3ef;
+  --card: #ffffff;
+  --white: #181820;
+  --gray: #555562;
+  --border: rgba(25,25,40,.13);
+  --blue: #5147e8;
+  background: var(--bg);
+  color: var(--white);
+}
+.light-theme header { background: rgba(245,243,239,.92); border-bottom-color: rgba(25,25,40,.1); }
+.light-theme .nav-links a { color: #454552; }
+.light-theme .nav-links a:hover { color: #5147e8; }
+.light-theme .section-description { color: #555562; font-size: 17px; line-height: 1.9; }
+.light-theme .section-label { color: #5147e8; font-weight: 800; letter-spacing: 2.5px; }
+.light-theme .project,
+.light-theme .service-card,
+.light-theme .price-card,
+.light-theme .about-box {
+  background: #fff;
+  border-color: rgba(25,25,40,.12);
+  box-shadow: 0 8px 30px rgba(30,25,60,.045);
+}
+.light-theme .project:hover,
+.light-theme .service-card:hover,
+.light-theme .price-card:hover {
+  border-color: rgba(81,71,232,.4);
+  box-shadow: 0 18px 45px rgba(30,25,60,.09);
+}
+.light-theme .project-info h3,
+.light-theme .service-card h3,
+.light-theme .price-card h3 { color: #181820; }
+.light-theme .project-info p,
+.light-theme .service-card p { color: #555562; font-size: 15px; line-height: 1.85; }
+.light-theme .project-type,
+.light-theme .service-number,
+.light-theme .price-tag { color: #5147e8; }
+.light-theme .price-card ul li { color: #454552; font-size: 15px; line-height: 1.9; }
+.light-theme .price { color: #5147e8; }
+.light-theme .btn-primary,
+.light-theme .nav-btn { background: #5147e8; color: #fff; box-shadow: 0 6px 20px rgba(81,71,232,.18); }
+.light-theme .btn-primary:hover,
+.light-theme .nav-btn:hover { background: #4036d0; box-shadow: 0 10px 30px rgba(81,71,232,.28); transform: translateY(-3px); }
+.light-theme .btn-outline { color: #292936; border-color: rgba(25,25,40,.25); }
+.light-theme .btn-outline:hover { color: #5147e8; border-color: #5147e8; background: rgba(81,71,232,.05); }
+.light-theme .about-box p { color: #555562; font-size: 16px; line-height: 1.9; }
+.light-theme .about-points div { color: #353541; font-size: 15px; padding: 10px 0; }
+.light-theme .project-form label { color: #353541; font-size: 14px; font-weight: 700; }
+.light-theme .project-form input,
+.light-theme .project-form select,
+.light-theme .project-form textarea { background: #fff; color: #181820; border-color: rgba(25,25,40,.18); font-size: 16px; padding: 16px; }
+.light-theme .project-form input::placeholder,
+.light-theme .project-form textarea::placeholder { color: #777784; }
+.light-theme .project-form input:focus,
+.light-theme .project-form select:focus,
+.light-theme .project-form textarea:focus { border-color: #5147e8; box-shadow: 0 0 0 3px rgba(81,71,232,.1); }
+.light-theme .form-note { color: #666674; font-size: 13px; }
+.light-theme footer { background: #ebe8e2; border-top-color: rgba(25,25,40,.1); }
+.light-theme footer p { color: #555562; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .loader-logo { letter-spacing: -2px; }
+  .hero::before { width: 400px; height: 400px; right: -180px; top: -100px; }
+  .project-expanded .project-details { max-height: 320px; }
+  .light-theme .section-description { font-size: 16px; }
+  .light-theme .project-info p,
+  .light-theme .service-card p { font-size: 14px; }
+}
+
+/* ACCESSIBILITY: REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
