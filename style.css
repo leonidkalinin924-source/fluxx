@@ -1540,80 +1540,79 @@ body.light-theme #portfolio .project:hover {
   }
 }
 
-/* FLUXX — VIEW PROJECT OVERLAY */
+
+/* FLUXX — VIEW PROJECT FIX */
 
 #portfolio .project-image {
-  position: relative;
-  overflow: hidden;
-  cursor: none;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-/* Затемнение */
-#portfolio .project-image::after {
-  content: "";
+#portfolio .project-image img {
+  display: block;
+  width: 100%;
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+/* Затемнение фотографии */
+#portfolio .project-image .view-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(130, 60, 255, 0.05),
-    rgba(10, 10, 15, 0.75)
-  );
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(12, 10, 20, 0.55);
+  backdrop-filter: blur(3px);
+
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
   pointer-events: none;
 }
 
-/* Надпись */
-#portfolio .project-image::before {
-  content: "VIEW PROJECT ↗";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% + 20px));
-  z-index: 2;
+/* Стеклянная надпись */
+#portfolio .project-image .view-overlay span {
+  padding: 15px 25px;
 
-  font-family: "Manrope", sans-serif;
+  border: 1px solid rgba(168, 85, 247, 0.8);
+  border-radius: 50px;
+
+  background: rgba(168, 85, 247, 0.2);
+  backdrop-filter: blur(12px);
+
+  color: white;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 2px;
-  white-space: nowrap;
 
-  color: #fff;
-  background: rgba(140, 75, 255, 0.18);
-  border: 1px solid rgba(180, 130, 255, 0.6);
-  backdrop-filter: blur(12px);
-
-  padding: 15px 25px;
-  border-radius: 50px;
-
-  opacity: 0;
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s cubic-bezier(.2,.8,.2,1);
-  pointer-events: none;
+  transform: translateY(20px);
+  transition: transform 0.35s ease;
 }
 
-/* Появление при наведении */
-#portfolio .project:hover .project-image::before {
+/* Появление */
+#portfolio .project:hover .view-overlay {
   opacity: 1;
-  transform: translate(-50%, -50%);
 }
 
-#portfolio .project:hover .project-image::after {
-  opacity: 1;
+#portfolio .project:hover .view-overlay span {
+  transform: translateY(0);
+}
+
+#portfolio .project:hover .project-image img {
+  transform: scale(1.07);
+  filter: brightness(0.75);
 }
 
 /* Светлая тема */
-body.light-theme #portfolio .project-image::before {
-  color: #fff;
-  background: rgba(180, 140, 50, 0.2);
-  border-color: rgba(220, 185, 90, 0.8);
+body.light-theme #portfolio .project-image .view-overlay {
+  background: rgba(20, 20, 20, 0.45);
 }
 
-/* Мобильные устройства */
+/* Телефоны */
 @media (hover: none) {
-  #portfolio .project-image::before,
-  #portfolio .project-image::after {
+  #portfolio .project-image .view-overlay {
     display: none;
   }
 }
