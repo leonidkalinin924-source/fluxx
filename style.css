@@ -1317,3 +1317,57 @@ body.light-theme .price-card:hover {
     transform: none;
   }
 }
+
+/* FLUXX — PRICE CARDS HOVER */
+
+#pricing .price-card {
+  position: relative;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+/* Подъём карточки */
+#pricing .price-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Свечение в тёмной теме */
+#pricing .price-card:hover {
+  box-shadow:
+    0 0 25px rgba(155, 92, 255, 0.22),
+    0 15px 45px rgba(155, 92, 255, 0.12);
+  border-color: rgba(155, 92, 255, 0.65);
+}
+
+/* Средняя карточка */
+#pricing .price-card.featured:hover {
+  transform: translateY(-12px);
+  box-shadow:
+    0 0 35px rgba(155, 92, 255, 0.35),
+    0 20px 55px rgba(155, 92, 255, 0.18);
+}
+
+/* Светлая тема — золотое свечение */
+body.light-theme #pricing .price-card:hover {
+  box-shadow:
+    0 0 25px rgba(190, 150, 60, 0.22),
+    0 15px 45px rgba(190, 150, 60, 0.12);
+  border-color: rgba(190, 150, 60, 0.65);
+}
+
+body.light-theme #pricing .price-card.featured:hover {
+  box-shadow:
+    0 0 35px rgba(190, 150, 60, 0.3),
+    0 20px 55px rgba(190, 150, 60, 0.15);
+}
+
+/* Телефоны — без прыжков */
+@media (hover: none) {
+  #pricing .price-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
