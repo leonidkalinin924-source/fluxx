@@ -365,6 +365,43 @@
 
   </div>
 </footer>
+  
+/* PROJECT FORM */
+
+const projectForm = document.getElementById('projectForm');
+
+if (projectForm) {
+  projectForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('clientName').value.trim();
+    const type = document.getElementById('clientType').value;
+    const budget = document.getElementById('clientBudget').value;
+    const message = document.getElementById('clientMessage').value.trim();
+
+    const text =
+      `Новая заявка FLUXX%0A%0A` +
+      `Имя: ${encodeURIComponent(name)}%0A` +
+      `Тип сайта: ${encodeURIComponent(type)}%0A` +
+      `Бюджет: ${encodeURIComponent(budget)}%0A` +
+      `Описание: ${encodeURIComponent(message || 'Не указано')}`;
+
+    const telegramUrl = `https://t.me/bubkababki`;
+
+    try {
+      await navigator.clipboard.writeText(
+        `Новая заявка FLUXX\n\nИмя: ${name}\nТип сайта: ${type}\nБюджет: ${budget}\nОписание: ${message || 'Не указано'}`
+      );
+    } catch (error) {
+      console.log('Не удалось автоматически скопировать заявку');
+    }
+
+    window.open(telegramUrl, '_blank');
+
+    alert('Заявка скопирована! Вставь её в открывшийся чат Telegram.');
+  });
+}
+
 
 <!-- ANIMATIONS + THEME SWITCH -->
 
