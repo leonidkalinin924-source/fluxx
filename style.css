@@ -1539,3 +1539,81 @@ body.light-theme #portfolio .project:hover {
     transition: none !important;
   }
 }
+
+/* FLUXX — VIEW PROJECT OVERLAY */
+
+#portfolio .project-image {
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+/* Затемнение */
+#portfolio .project-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(130, 60, 255, 0.05),
+    rgba(10, 10, 15, 0.75)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Надпись */
+#portfolio .project-image::before {
+  content: "VIEW PROJECT ↗";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 20px));
+  z-index: 2;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  white-space: nowrap;
+
+  color: #fff;
+  background: rgba(140, 75, 255, 0.18);
+  border: 1px solid rgba(180, 130, 255, 0.6);
+  backdrop-filter: blur(12px);
+
+  padding: 15px 25px;
+  border-radius: 50px;
+
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+}
+
+/* Появление при наведении */
+#portfolio .project:hover .project-image::before {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+#portfolio .project:hover .project-image::after {
+  opacity: 1;
+}
+
+/* Светлая тема */
+body.light-theme #portfolio .project-image::before {
+  color: #fff;
+  background: rgba(180, 140, 50, 0.2);
+  border-color: rgba(220, 185, 90, 0.8);
+}
+
+/* Мобильные устройства */
+@media (hover: none) {
+  #portfolio .project-image::before,
+  #portfolio .project-image::after {
+    display: none;
+  }
+}
