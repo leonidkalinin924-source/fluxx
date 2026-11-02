@@ -14,6 +14,13 @@
 
 <body>
 
+<!-- FLUXX PRELOADER -->
+<div class="fluxx-loader" id="fluxxLoader" aria-label="Загрузка FLUXX">
+  <div class="loader-logo">FLUXX<span>.</span></div>
+  <div class="loader-line"></div>
+  <p>DESIGNING YOUR DIGITAL FUTURE</p>
+</div>
+
 <!-- HEADER -->
 <header>
   <nav class="container">
@@ -102,6 +109,13 @@
             Сайт клининговой компании с интерактивным
             калькулятором стоимости и формой заявки.
           </p>
+          <div class="project-details">
+            <span>PROJECT DETAILS</span>
+            <p>Современный сайт клининговой компании с калькулятором стоимости и удобной формой заявки.</p>
+            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+          <p class="project-description-placeholder" style="display:none">
+          </p>
         </div>
       </article>
 
@@ -129,6 +143,13 @@
             Премиальный сайт детейлинг-студии с презентацией
             услуг и акцентом на визуал.
           </p>
+          <div class="project-details">
+            <span>PROJECT DETAILS</span>
+            <p>Премиальный лендинг с презентацией детейлинг-услуг, эффектной визуальной подачей и адаптацией под мобильные устройства.</p>
+            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+          <p class="project-description-placeholder" style="display:none">
+          </p>
         </div>
       </article>
 
@@ -155,6 +176,13 @@
           <p>
             Стильный сайт барбершопа с выразительным
             оформлением и удобной записью.
+          </p>
+          <div class="project-details">
+            <span>PROJECT DETAILS</span>
+            <p>Визуально выразительный сайт барбершопа с презентацией услуг и понятным сценарием записи.</p>
+            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+          <p class="project-description-placeholder" style="display:none">
           </p>
         </div>
       </article>
@@ -617,6 +645,35 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  /* FLUXX PRELOADER */
+  const loader = document.getElementById("fluxxLoader");
+  if (loader) {
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        loader.classList.add("loader-hidden");
+        setTimeout(function () { loader.remove(); }, 800);
+      }, 900);
+    });
+  }
+
+  /* PROJECT DETAILS: hover + keyboard/touch toggle */
+  document.querySelectorAll("#portfolio .project").forEach(function (project) {
+    project.addEventListener("click", function (event) {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      project.classList.toggle("project-expanded");
+    });
+    project.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        project.classList.toggle("project-expanded");
+      }
+    });
+  });
+
+  /* HERO INTRO */
+  const heroContent = document.querySelector(".hero-content");
+  if (heroContent) heroContent.classList.add("hero-animated");
 
 });
 </script>
