@@ -662,6 +662,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+/* VIEW PROJECT OVERLAY */
+
+document.querySelectorAll("#portfolio .project-image").forEach(function (image) {
+
+  const overlay = document.createElement("div");
+  overlay.className = "view-overlay";
+
+  const text = document.createElement("span");
+  text.textContent = "VIEW PROJECT ↗";
+
+  overlay.appendChild(text);
+  image.appendChild(overlay);
+
+});
+
 
   /* =========================
      FLUXX CUSTOM CURSOR
