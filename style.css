@@ -1440,3 +1440,102 @@ body.light-theme #pricing .price-card.featured:hover {
     display: none !important;
   }
 }
+
+/* =================================
+   FLUXX — INTERACTIVE PORTFOLIO
+================================= */
+
+/* Карточка проекта */
+#portfolio .project {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  transition:
+    transform 0.4s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Поднимаем карточку */
+#portfolio .project:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 15px 45px rgba(155, 92, 255, 0.18),
+    0 0 25px rgba(155, 92, 255, 0.12);
+}
+
+/* Изображение */
+#portfolio .project-image {
+  overflow: hidden;
+}
+
+/* Плавное приближение */
+#portfolio .project-image img {
+  transition:
+    transform 0.7s cubic-bezier(.2,.8,.2,1),
+    filter 0.5s ease;
+}
+
+/* Наведение на картинку */
+#portfolio .project:hover .project-image img {
+  transform: scale(1.08);
+  filter: brightness(1.08);
+}
+
+/* Информация */
+#portfolio .project-info {
+  transition: transform 0.4s ease;
+}
+
+#portfolio .project:hover .project-info {
+  transform: translateY(-3px);
+}
+
+/* Ссылка на проект */
+#portfolio .project-link {
+  display: inline-block;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
+}
+
+#portfolio .project:hover .project-link {
+  transform: translateX(5px);
+  letter-spacing: 0.3px;
+  color: var(--blue);
+}
+
+/* Светлая тема */
+body.light-theme #portfolio .project:hover {
+  box-shadow:
+    0 15px 45px rgba(190, 150, 60, 0.18),
+    0 0 25px rgba(190, 150, 60, 0.12);
+}
+
+/* Мобильные устройства */
+@media (hover: none) {
+  #portfolio .project:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  #portfolio .project:hover .project-image img {
+    transform: none;
+    filter: none;
+  }
+
+  #portfolio .project:hover .project-info {
+    transform: none;
+  }
+}
+
+/* Учитываем настройки уменьшения анимации */
+@media (prefers-reduced-motion: reduce) {
+  #portfolio .project,
+  #portfolio .project-image img,
+  #portfolio .project-info,
+  #portfolio .project-link {
+    transition: none !important;
+  }
+}
