@@ -383,6 +383,55 @@ if (projectForm) {
     }
   });
 }
+  
+/* FLUXX — CUSTOM CURSOR */
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  const cursor = document.createElement("div");
+  const ring = document.createElement("div");
+
+  cursor.className = "fluxx-cursor";
+  ring.className = "fluxx-cursor-ring";
+
+  document.body.appendChild(ring);
+  document.body.appendChild(cursor);
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+
+    ring.style.left = ringX + "px";
+    ring.style.top = ringY + "px";
+
+    requestAnimationFrame(animateRing);
+  }
+
+  animateRing();
+
+  document.querySelectorAll("a, button").forEach((element) => {
+    element.addEventListener("mouseenter", () => {
+      cursor.classList.add("hover");
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursor.classList.remove("hover");
+    });
+  }
+}
+
 </script>
 
 </body>
