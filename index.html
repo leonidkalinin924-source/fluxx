@@ -598,6 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ).matches;
 
   if (canUseCustomCursor) {
+    document.body.classList.add("custom-cursor-active");
     const cursor = document.createElement("div");
     const ring = document.createElement("div");
 
