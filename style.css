@@ -1870,3 +1870,119 @@ body.custom-cursor-active textarea,
 body.custom-cursor-active [role="link"] {
   cursor: none !important;
 }
+
+
+/* ==========================================
+   FLUXX UPDATE: FAQ · CASE STUDIES · CONTACT CTA
+   Appended to the user's current stylesheet
+   ========================================== */
+
+/* Case study details: reveal on hover/focus, keep navigation click intact */
+.project-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: max-height .45s ease, opacity .35s ease, transform .35s ease, margin .35s ease;
+}
+#portfolio .project:hover .project-details,
+#portfolio .project:focus-visible .project-details,
+#portfolio .project:focus-within .project-details {
+  max-height: 340px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 16px;
+}
+.case-row { margin: 0 0 11px; }
+.case-row strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 800;
+}
+.case-row p { margin: 0; color: var(--gray); font-size: 13px; line-height: 1.7; }
+.project-details > span { display:block; margin-bottom:12px; color:var(--blue); font-size:10px; font-weight:800; letter-spacing:1.6px; }
+.project-tech { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+.project-tech span { padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--gray); font-size:10px; font-weight:700; }
+
+/* FAQ */
+#faq { position:relative; }
+.faq-list { display:grid; gap:12px; max-width:900px; margin-top:40px; }
+.faq-item {
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--card);
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.faq-item:hover, .faq-item[open] { border-color:rgba(104,101,255,.55); box-shadow:0 12px 35px rgba(104,101,255,.08); }
+.faq-item summary {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:21px 24px;
+  color:var(--white);
+  cursor:pointer;
+  list-style:none;
+  font-size:15px;
+  font-weight:750;
+}
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-icon {
+  display:grid;
+  place-items:center;
+  flex:0 0 30px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(104,101,255,.13);
+  color:var(--blue);
+  font-size:21px;
+  line-height:1;
+  transition:transform .25s ease;
+}
+.faq-item[open] .faq-icon { transform:rotate(45deg); }
+.faq-item > p { max-width:760px; margin:0 24px 23px; color:var(--gray); font-size:14px; line-height:1.85; }
+
+/* Direct contact CTA before the existing form */
+.contact-cta {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:26px;
+  margin:38px 0 30px;
+  padding:28px 30px;
+  border:1px solid rgba(104,101,255,.28);
+  border-radius:20px;
+  background:radial-gradient(circle at 8% 0%, rgba(104,101,255,.16), transparent 48%), var(--card);
+}
+.contact-cta-label { display:block; margin-bottom:9px; color:var(--blue); font-size:10px; font-weight:800; letter-spacing:1.7px; }
+.contact-cta h3 { margin:0 0 7px; color:var(--white); font-size:clamp(21px,3vw,28px); font-weight:800; }
+.contact-cta p { max-width:560px; margin:0; color:var(--gray); font-size:14px; line-height:1.75; }
+.contact-cta .btn { flex:0 0 auto; white-space:nowrap; }
+
+/* Light theme */
+body.light-theme .faq-item { background:#fff; border-color:rgba(25,25,40,.12); box-shadow:0 8px 24px rgba(30,25,60,.035); }
+body.light-theme .faq-item summary,
+body.light-theme .case-row strong,
+body.light-theme .contact-cta h3 { color:#181820; }
+body.light-theme .faq-item > p,
+body.light-theme .case-row p,
+body.light-theme .contact-cta p { color:#555562; }
+body.light-theme .contact-cta { background:radial-gradient(circle at 8% 0%, rgba(81,71,232,.10), transparent 48%), #fff; border-color:rgba(81,71,232,.2); box-shadow:0 12px 32px rgba(30,25,60,.045); }
+body.light-theme .project-tech span { color:#555562; border-color:rgba(25,25,40,.16); }
+
+/* Touch screens: details are visible because hover is unavailable */
+@media (hover:none), (max-width:700px) {
+  #portfolio .project-details { max-height:none; opacity:1; overflow:visible; transform:none; margin-top:14px; }
+  .contact-cta { align-items:flex-start; flex-direction:column; padding:23px 20px; }
+  .contact-cta .btn { width:100%; }
+  .faq-list { margin-top:28px; gap:9px; }
+  .faq-item summary { padding:18px; font-size:14px; }
+  .faq-item > p { margin:0 18px 19px; font-size:13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item, .faq-icon, .project-details { transition:none !important; }
+}
