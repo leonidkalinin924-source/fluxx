@@ -1837,3 +1837,25 @@ body.light-theme {
     scroll-behavior: auto !important;
   }
 }
+/* CLEAN PRICE LIST ICONS */
+
+.price-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.price-card ul li {
+  position: relative;
+  padding-left: 30px;
+}
+
+.price-card ul li::before {
+  content: "✓" !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #7168ff;
+  font-size: 14px;
+  font-weight: 800;
+}
