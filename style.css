@@ -1859,3 +1859,14 @@ body.light-theme {
   font-size: 14px;
   font-weight: 800;
 }
+/* HIDE DEFAULT CURSOR WHEN CUSTOM CURSOR IS ACTIVE */
+
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active input,
+body.custom-cursor-active select,
+body.custom-cursor-active textarea,
+body.custom-cursor-active [role="link"] {
+  cursor: none !important;
+}
