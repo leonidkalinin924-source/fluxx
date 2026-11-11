@@ -1142,7 +1142,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!projectForm.reportValidity()) return;
 
       applicationText.value =
-        "Новая заявка FLUXX\n\n" +
+       "Новая заявка FLUXX\n\n" +
+"Тариф: " + (document.getElementById("clientPlan")?.value || "Пока не выбран") + "\n" +
         "Имя: " + nameInput.value.trim() + "\n" +
         "Тип сайта: " + document.getElementById("clientType").value + "\n" +
         "Бюджет: " + document.getElementById("clientBudget").value + "\n" +
@@ -1303,6 +1304,119 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("projectForm");
+  const siteType = document.getElementById("clientType");
 
+  if (!form || !siteType || document.getElementById("clientPlan")) {
+    return;
+  }
+
+  const plans = {
+    "Landing Page": "Landing Page",
+    "Business": "Сайт для бизнеса",
+    "Custom": "Индивидуальный проект"
+  };
+
+  /* Добавляем выбор тарифа в начало формы. */
+  const group = document.createElement("div");
+  group.className = "form-group";
+
+  const label = document.createElement("label");
+  label.htmlFor = "clientPlan";
+  label.textContent = "Выбранный тариф";
+
+  const planSelect = document.createElement("select");
+  planSelect.id = "clientPlan";
+  planSelect.name = "plan";
+
+  planSelect.add(new Option("Пока не определился", ""));
+
+  Object.keys(plans).forEach(function (plan) {
+    planSelect.add(new Option(plan, plan));
+  });
+
+  group.append(label, planSelect);
+  form.prepend(group);
+
+  /* После изменений старую заявку нужно подготовить заново. */
+  function invalidateApplication() {
+    const preview = document.getElementById("applicationPreview");
+    const status = document.getElementById("formStatus");
+
+    if (preview && !preview.hidden) {
+      preview.hidden = true;
+
+      if (status) {
+        status.textContent =
+          "Данные изменились. Нажми «Обсудить проект в Telegram», чтобы подготовить новую заявку.";
+      }
+    }
+  }
+
+  /* Синхронизируем тариф с выбранным типом сайта. */
+  function syncPlanFromType() {
+    planSelect.value = Object.keys(plans).find(function (plan) {
+      return plans[plan] === siteType.value;
+    }) || "";
+  }
+
+  syncPlanFromType();
+
+  planSelect.addEventListener("change", function () {
+    if (planSelect.value) {
+      siteType.value = plans[planSelect.value];
+    }
+
+    invalidateApplication();
+  });
+
+  siteType.addEventListener("change", function () {
+    syncPlanFromType();
+    invalidateApplication();
+  });
+
+  /* Подключаем кнопки трёх тарифов. */
+  document.querySelectorAll("#pricing .price-card").forEach(function (card) {
+    const title = card.querySelector("h3");
+    const button = card.querySelector('a.btn[href="#contact"]');
+    const plan = title ? title.textContent.trim() : "";
+
+    if (
+      !button ||
+      !Object.prototype.hasOwnProperty.call(plans, plan)
+    ) {
+      return;
+    }
+
+    button.href = "#projectForm";
+
+    button.addEventListener("click", function (event) {
+      if (
+        event.button !== 0 ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      planSelect.value = plan;
+      siteType.value = plans[plan];
+
+      invalidateApplication();
+
+      requestAnimationFrame(function () {
+        planSelect.focus({ preventScroll: true });
+      });
+    });
+  });
+
+  form.addEventListener("input", invalidateApplication);
+  form.addEventListener("change", invalidateApplication);
+});
+</script>
 </body>
 </html>
