@@ -1463,5 +1463,242 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("change", invalidateApplication);
 });
 </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const grid = document.querySelector("#portfolio .projects");
+
+  /* Переключение между компьютером и телефоном. */
+  if (grid && !document.getElementById("previewSwitch")) {
+    const views = [];
+
+    grid.id = grid.id || "projectGrid";
+    grid.dataset.preview = "desktop";
+
+    grid.querySelectorAll("a.project").forEach(function (original) {
+      const url = original.href;
+      const label = original.getAttribute("aria-label");
+
+      const card = document.createElement("article");
+      card.className = original.className;
+
+      while (original.firstChild) {
+        card.appendChild(original.firstChild);
+      }
+
+      original.replaceWith(card);
+
+      const link = document.createElement("a");
+      link.className = "project-open";
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Посмотреть сайт ↗";
+
+      if (label) {
+        link.setAttribute("aria-label", label);
+      }
+
+      card.appendChild(link);
+
+      const stage = card.querySelector(".project-image");
+      if (!stage) return;
+
+      const pane = document.createElement("div");
+      pane.className = "phone-preview";
+      pane.setAttribute("aria-hidden", "true");
+
+      const shell = document.createElement("div");
+      shell.className = "phone-shell";
+
+      pane.appendChild(shell);
+      stage.appendChild(pane);
+
+      const view = {
+        stage: stage,
+        shell: shell,
+        url: url,
+        frame: null,
+        name: card.querySelector("h3").textContent.trim()
+      };
+
+      function fitPhone() {
+        const scale = Math.max(
+          .1,
+          Math.min(
+            (stage.clientWidth - 52) / 390,
+            (stage.clientHeight - 52) / 844
+          )
+        );
+
+        shell.style.width = 390 * scale + "px";
+        shell.style.height = 844 * scale + "px";
+
+        if (view.frame) {
+          view.frame.style.transform = "scale(" + scale + ")";
+        }
+      }
+
+      view.fit = fitPhone;
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(fitPhone).observe(stage);
+      } else {
+        window.addEventListener("resize", fitPhone);
+      }
+
+      views.push(view);
+    });
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "portfolio-toolbar";
+
+    const hint = document.createElement("p");
+    hint.textContent = "Посмотри проекты на разных экранах.";
+
+    const controls = document.createElement("div");
+    controls.id = "previewSwitch";
+    controls.className = "preview-switch";
+    controls.setAttribute("role", "group");
+    controls.setAttribute("aria-label", "Формат превью проектов");
+
+    const status = document.createElement("span");
+    status.className = "visually-hidden";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+
+    const buttons = [];
+
+    function setPreview(mode) {
+      grid.dataset.preview = mode;
+
+      buttons.forEach(function (button) {
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.mode === mode)
+        );
+      });
+
+      if (mode === "phone") {
+        views.forEach(function (view) {
+          if (!view.frame) {
+            const frame = document.createElement("iframe");
+
+            frame.className = "phone-frame";
+            frame.title = "Мобильное превью " + view.name;
+            frame.width = "390";
+            frame.height = "844";
+            frame.loading = "lazy";
+            frame.tabIndex = -1;
+            frame.setAttribute("aria-hidden", "true");
+            frame.setAttribute("sandbox", "");
+            frame.referrerPolicy = "no-referrer";
+
+            const loading = document.createElement("span");
+            loading.className = "phone-wait";
+            loading.textContent = "Загрузка превью…";
+
+            frame.addEventListener("load", function () {
+              loading.hidden = true;
+            }, { once: true });
+
+            frame.src = view.url;
+            view.frame = frame;
+
+            view.shell.append(loading, frame);
+          }
+
+          view.fit();
+        });
+      }
+
+      status.textContent = mode === "phone"
+        ? "Показаны мобильные версии проектов."
+        : "Показаны версии проектов для компьютера.";
+    }
+
+    [
+      ["desktop", "Компьютер"],
+      ["phone", "Телефон"]
+    ].forEach(function (item) {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.dataset.mode = item[0];
+      button.textContent = item[1];
+      button.setAttribute("aria-controls", grid.id);
+      button.setAttribute(
+        "aria-pressed",
+        String(item[0] === "desktop")
+      );
+
+      button.addEventListener("click", function () {
+        setPreview(item[0]);
+      });
+
+      buttons.push(button);
+      controls.appendChild(button);
+    });
+
+    toolbar.append(hint, controls, status);
+    grid.before(toolbar);
+  }
+
+  /* Плавающая кнопка Telegram на мобильном. */
+  if (!document.getElementById("mobileTelegram")) {
+    const contact = document.getElementById("contact");
+    const menu = document.getElementById("menuToggle");
+    const mobile = window.matchMedia("(max-width: 700px)");
+
+    const button = document.createElement("a");
+
+    button.id = "mobileTelegram";
+    button.className = "telegram-float";
+    button.href = "https://t.me/bubkababki";
+    button.target = "_blank";
+    button.rel = "noopener noreferrer";
+    button.setAttribute(
+      "aria-label",
+      "Написать в Telegram, откроется новая вкладка"
+    );
+
+    button.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M21.4 3.6 18 20c-.3 1.2-1 1.5-2 1l-5.2-3.9-2.5 2.4c-.3.3-.5.5-1 .5l.4-5.3L17.4 6c.4-.4-.1-.6-.6-.3L4.7 13.3l-5-1.6c-1.1-.4-1.1-1.1.2-1.6L19.5 2.5c.9-.3 1.7.2 1.4 1.1Z" fill="currentColor"/>' +
+      '</svg><span>Написать в Telegram</span>';
+
+    button.hidden = true;
+    document.body.appendChild(button);
+
+    let contactVisible = false;
+
+    function updateButton() {
+      const menuOpen =
+        menu && menu.getAttribute("aria-expanded") === "true";
+
+      button.hidden =
+        !mobile.matches || contactVisible || Boolean(menuOpen);
+    }
+
+    if (contact && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        contactVisible = entries[0].isIntersecting;
+        updateButton();
+      }, {
+        threshold: 0
+      }).observe(contact);
+    }
+
+    if (menu) {
+      new MutationObserver(updateButton).observe(menu, {
+        attributes: true,
+        attributeFilter: ["aria-expanded"]
+      });
+    }
+
+    mobile.addEventListener("change", updateButton);
+    updateButton();
+  }
+});
+</script>
 </body>
 </html>
