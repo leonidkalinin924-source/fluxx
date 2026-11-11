@@ -7,6 +7,17 @@
   <title>FLUXX — Web Development</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    // Загрузчик не должен ждать внешние изображения и шрифты.
+    window.setTimeout(function () {
+      const loader = document.getElementById("fluxxLoader");
+      if (loader) loader.remove();
+    }, 2000);
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,37 +25,54 @@
 
 <body>
 
-<!-- FLUXX PRELOADER -->
-<div class="fluxx-loader" id="fluxxLoader" aria-label="Загрузка FLUXX">
+<!-- ЗАГРУЗЧИК -->
+<div class="fluxx-loader" id="fluxxLoader" aria-hidden="true">
   <div class="loader-logo">FLUXX<span>.</span></div>
   <div class="loader-line"></div>
   <p>DESIGNING YOUR DIGITAL FUTURE</p>
 </div>
 
-<!-- HEADER -->
+<!-- ШАПКА -->
 <header>
-  <nav class="container">
+  <nav class="container" aria-label="Основная навигация">
     <a href="#home" class="logo">FLUXX<span>.</span></a>
 
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#portfolio">Портфолио</a>
       <a href="#services">Услуги</a>
       <a href="#pricing">Цены</a>
       <a href="#about">Обо мне</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-contact">Обсудить проект ↗</a>
     </div>
 
     <a href="#contact" class="nav-btn">Обсудить проект ↗</a>
 
-    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+    <button
+      class="theme-toggle"
+      id="themeToggle"
+      type="button"
+      aria-label="Включить светлую тему"
+    >
       ☀
+    </button>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-controls="navLinks"
+      aria-expanded="false"
+      aria-label="Открыть меню"
+    >
+      <span class="menu-icon" aria-hidden="true"></span>
     </button>
   </nav>
 </header>
 
 <main>
 
-<!-- HERO -->
+<!-- ПЕРВЫЙ ЭКРАН -->
 <section class="hero" id="home">
   <div class="container hero-content reveal">
     <span class="eyebrow">WEB DEVELOPMENT · DIGITAL DESIGN</span>
@@ -68,10 +96,9 @@
   </div>
 </section>
 
-<!-- PORTFOLIO -->
+<!-- ПОРТФОЛИО -->
 <section id="portfolio">
   <div class="container reveal">
-
     <p class="section-label">МОИ РАБОТЫ</p>
 
     <h2 class="section-title">
@@ -80,18 +107,19 @@
     </h2>
 
     <p class="section-description">
-      Здесь собраны демонстрационные проекты — примеры дизайна, структуры и функций, которые можно адаптировать под задачи бизнеса.
+      Здесь собраны демонстрационные проекты — примеры дизайна,
+      структуры и функций, которые можно адаптировать под задачи бизнеса.
     </p>
 
     <div class="projects">
 
       <!-- CLEAR SPACE -->
-      <article
+      <a
         class="project"
-        data-url="https://leonidkalinin924-source.github.io/clear-space-cleaning/"
-        tabindex="0"
-        role="link"
-        aria-label="Открыть CLEAR SPACE"
+        href="https://leonidkalinin924-source.github.io/clear-space-cleaning/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть CLEAR SPACE (в новой вкладке)"
       >
         <div class="project-image">
           <img
@@ -109,22 +137,36 @@
             Сайт клининговой компании с интерактивным
             калькулятором стоимости и формой заявки.
           </p>
+
           <div class="project-details">
             <span>ДЕМОПРОЕКТ · КЕЙС</span>
-            <div class="case-row"><strong>Задача</strong><p>Показать услуги клининговой компании и упростить расчёт стоимости.</p></div>
-            <div class="case-row"><strong>Решение</strong><p>Структура услуг, интерактивный калькулятор и форма заявки с удобной навигацией.</p></div>
-            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+
+            <div class="case-row">
+              <strong>Задача</strong>
+              <p>Показать услуги клининговой компании и упростить расчёт стоимости.</p>
+            </div>
+
+            <div class="case-row">
+              <strong>Решение</strong>
+              <p>Структура услуг, интерактивный калькулятор и форма заявки с удобной навигацией.</p>
+            </div>
+
+            <div class="project-tech">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- GLOSS GARAGE -->
-      <article
+      <a
         class="project"
-        data-url="https://leonidkalinin924-source.github.io/gloss-garage/"
-        tabindex="0"
-        role="link"
-        aria-label="Открыть GLOSS GARAGE"
+        href="https://leonidkalinin924-source.github.io/gloss-garage/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть GLOSS GARAGE (в новой вкладке)"
       >
         <div class="project-image">
           <img
@@ -142,22 +184,36 @@
             Премиальный сайт детейлинг-студии с презентацией
             услуг и акцентом на визуал.
           </p>
+
           <div class="project-details">
             <span>ДЕМОПРОЕКТ · КЕЙС</span>
-            <div class="case-row"><strong>Задача</strong><p>Передать премиальный характер детейлинг-студии и наглядно представить услуги.</p></div>
-            <div class="case-row"><strong>Решение</strong><p>Тёмная визуальная концепция, карточки услуг, автомобильные изображения и запись через Telegram.</p></div>
-            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+
+            <div class="case-row">
+              <strong>Задача</strong>
+              <p>Передать премиальный характер детейлинг-студии и наглядно представить услуги.</p>
+            </div>
+
+            <div class="case-row">
+              <strong>Решение</strong>
+              <p>Тёмная визуальная концепция, карточки услуг, автомобильные изображения и запись через Telegram.</p>
+            </div>
+
+            <div class="project-tech">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- NORTH CUT -->
-      <article
+      <a
         class="project"
-        data-url="https://leonidkalinin924-source.github.io/mysite/#home"
-        tabindex="0"
-        role="link"
-        aria-label="Открыть NORTH CUT"
+        href="https://leonidkalinin924-source.github.io/mysite/#home"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть NORTH CUT (в новой вкладке)"
       >
         <div class="project-image">
           <img
@@ -175,23 +231,36 @@
             Стильный сайт барбершопа с выразительным
             оформлением и удобной записью.
           </p>
+
           <div class="project-details">
             <span>ДЕМОПРОЕКТ · КЕЙС</span>
-            <div class="case-row"><strong>Задача</strong><p>Создать узнаваемую онлайн-презентацию барбершопа и сделать запись понятной.</p></div>
-            <div class="case-row"><strong>Решение</strong><p>Контрастный фирменный стиль, презентация услуг и заметные кнопки связи и записи.</p></div>
-            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+
+            <div class="case-row">
+              <strong>Задача</strong>
+              <p>Создать узнаваемую онлайн-презентацию барбершопа и сделать запись понятной.</p>
+            </div>
+
+            <div class="case-row">
+              <strong>Решение</strong>
+              <p>Контрастный фирменный стиль, презентация услуг и заметные кнопки связи и записи.</p>
+            </div>
+
+            <div class="project-tech">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
           </div>
         </div>
-      </article>
+      </a>
 
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- УСЛУГИ -->
 <section id="services">
   <div class="container reveal">
-
     <p class="section-label">ЧТО Я ПРЕДЛАГАЮ</p>
 
     <h2 class="section-title">
@@ -205,7 +274,6 @@
     </p>
 
     <div class="services-grid">
-
       <article class="service-card">
         <span class="service-number">01 / LANDING</span>
         <h3>Лендинг</h3>
@@ -225,15 +293,13 @@
           услугах, преимуществах и контактами.
         </p>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ЦЕНЫ -->
 <section id="pricing">
   <div class="container reveal">
-
     <p class="section-label">СТОИМОСТЬ</p>
 
     <h2 class="section-title">
@@ -327,10 +393,9 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ОБО МНЕ -->
 <section id="about">
   <div class="container about-grid reveal">
-
     <div>
       <p class="section-label">НЕМНОГО ОБО МНЕ</p>
 
@@ -368,32 +433,97 @@
         <div>✳ Постоянное развитие</div>
       </div>
     </div>
-
   </div>
 </section>
-
 
 <!-- FAQ -->
 <section id="faq">
   <div class="container reveal">
     <p class="section-label">FAQ · ЧАСТЫЕ ВОПРОСЫ</p>
-    <h2 class="section-title">Перед стартом<br>всё по полочкам.</h2>
-    <p class="section-description">Коротко отвечаю на вопросы, которые обычно возникают перед заказом сайта.</p>
+
+    <h2 class="section-title">
+      Перед стартом<br>
+      всё по полочкам.
+    </h2>
+
+    <p class="section-description">
+      Коротко отвечаю на вопросы, которые обычно возникают перед заказом сайта.
+    </p>
+
     <div class="faq-list">
-      <details class="faq-item"><summary>Сколько времени занимает создание сайта?<span class="faq-icon">+</span></summary><p>Срок зависит от объёма и сложности. После обсуждения задачи, структуры и материалов согласуем реалистичный срок до начала работы.</p></details>
-      <details class="faq-item"><summary>Что входит в стоимость?<span class="faq-icon">+</span></summary><p>Состав работ зависит от выбранного формата. До старта фиксируем страницы и блоки, функции, адаптацию под телефон и публикацию сайта.</p></details>
-      <details class="faq-item"><summary>Можно ли сделать сайт в стиле моего бренда?<span class="faq-icon">+</span></summary><p>Да. Можно использовать ваши цвета, логотип, фотографии и примеры сайтов, которые вам нравятся. Если фирменного стиля пока нет, подберём визуальное направление вместе.</p></details>
-      <details class="faq-item"><summary>Смогу ли я потом менять текст и фотографии?<span class="faq-icon">+</span></summary><p>Контент можно обновлять. При передаче проекта объясню, где находятся основные тексты и изображения и как их заменить.</p></details>
-      <details class="faq-item"><summary>Что нужно подготовить для начала?<span class="faq-icon">+</span></summary><p>Достаточно кратко описать бизнес и цель сайта. Логотип, фотографии, тексты и примеры помогут, но обсудим и вариант, если материалов пока нет.</p></details>
-      <details class="faq-item"><summary>Как происходит оплата?<span class="faq-icon">+</span></summary><p>Этапы и условия оплаты согласуем заранее после обсуждения объёма и стоимости. Дополнительные работы — только по предварительному согласованию.</p></details>
+      <details class="faq-item">
+        <summary>
+          Сколько времени занимает создание сайта?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Срок зависит от объёма и сложности. После обсуждения задачи,
+          структуры и материалов согласуем реалистичный срок до начала работы.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Что входит в стоимость?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Состав работ зависит от выбранного формата. До старта фиксируем
+          страницы и блоки, функции, адаптацию под телефон и публикацию сайта.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Можно ли сделать сайт в стиле моего бренда?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Да. Можно использовать ваши цвета, логотип, фотографии и примеры
+          сайтов, которые вам нравятся. Если фирменного стиля пока нет,
+          подберём визуальное направление вместе.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Смогу ли я потом менять текст и фотографии?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Контент можно обновлять. При передаче проекта объясню, где находятся
+          основные тексты и изображения и как их заменить.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Что нужно подготовить для начала?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Достаточно кратко описать бизнес и цель сайта. Логотип, фотографии,
+          тексты и примеры помогут, но обсудим и вариант, если материалов пока нет.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Как происходит оплата?
+          <span class="faq-icon">+</span>
+        </summary>
+        <p>
+          Этапы и условия оплаты согласуем заранее после обсуждения объёма
+          и стоимости. Дополнительные работы — только по предварительному согласованию.
+        </p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- КОНТАКТЫ -->
 <section id="contact">
   <div class="container reveal">
-
     <p class="section-label">ЕСТЬ ИДЕЯ?</p>
 
     <h2 class="section-title">
@@ -405,24 +535,35 @@
       Заполни небольшую форму, и мы обсудим твой проект.
     </p>
 
-
     <div class="contact-cta">
       <div>
         <span class="contact-cta-label">ЕСТЬ ВОПРОС ИЛИ ГОТОВАЯ ИДЕЯ?</span>
         <h3>Обсудим твой проект</h3>
-        <p>Напиши напрямую — расскажи, какой сайт нужен. Обсудим задачу, сроки и подходящий формат.</p>
+        <p>
+          Напиши напрямую — расскажи, какой сайт нужен.
+          Обсудим задачу, сроки и подходящий формат.
+        </p>
       </div>
-      <a class="btn btn-primary" href="https://t.me/bubkababki" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
+
+      <a
+        class="btn btn-primary"
+        href="https://t.me/bubkababki"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Написать в Telegram ↗
+      </a>
     </div>
 
     <form class="project-form" id="projectForm">
-
       <div class="form-row">
         <div class="form-group">
           <label for="clientName">Как тебя зовут?</label>
           <input
             type="text"
             id="clientName"
+            name="name"
+            autocomplete="name"
             placeholder="Твоё имя"
             required
           >
@@ -431,10 +572,8 @@
         <div class="form-group">
           <label for="clientType">Какой сайт нужен?</label>
 
-          <select id="clientType" required>
-            <option value="" disabled selected>
-              Выбери тип сайта
-            </option>
+          <select id="clientType" name="type" required>
+            <option value="" disabled selected>Выбери тип сайта</option>
             <option>Landing Page</option>
             <option>Сайт для бизнеса</option>
             <option>Интернет-магазин</option>
@@ -446,10 +585,8 @@
       <div class="form-group">
         <label for="clientBudget">Планируемый бюджет</label>
 
-        <select id="clientBudget" required>
-          <option value="" disabled selected>
-            Выбери бюджет
-          </option>
+        <select id="clientBudget" name="budget" required>
+          <option value="" disabled selected>Выбери бюджет</option>
           <option>4 000 – 8 000 ₽</option>
           <option>8 000 – 15 000 ₽</option>
           <option>15 000 – 30 000 ₽</option>
@@ -463,6 +600,7 @@
 
         <textarea
           id="clientMessage"
+          name="message"
           rows="4"
           placeholder="Какой сайт хочешь? Что на нём должно быть?"
         ></textarea>
@@ -472,17 +610,62 @@
         Обсудить проект в Telegram ↗
       </button>
 
-      <p class="form-note">
-        Заявка скопируется — останется вставить её в Telegram.
+      <p class="form-note" id="formStatus" role="status" aria-live="polite">
+        Подготовим текст заявки — останется вставить его в Telegram и отправить.
       </p>
 
+      <div class="application-preview" id="applicationPreview" hidden>
+        <div class="form-group">
+          <label for="applicationText">Текст твоей заявки</label>
+          <textarea
+            id="applicationText"
+            rows="8"
+            readonly
+            aria-describedby="applicationHint"
+          ></textarea>
+        </div>
+
+        <p class="form-note" id="applicationHint">
+          Если копирование недоступно, выдели и скопируй текст вручную.
+        </p>
+
+        <div class="application-actions">
+          <button
+            type="button"
+            class="btn btn-outline"
+            id="copyApplication"
+          >
+            Скопировать текст
+          </button>
+
+          <a
+            class="btn btn-primary"
+            href="https://t.me/bubkababki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Открыть Telegram ↗
+          </a>
+        </div>
+      </div>
+
+      <noscript>
+        <p class="form-note">
+          Для подготовки заявки включи JavaScript или напиши напрямую
+          <a
+            href="https://t.me/bubkababki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >в Telegram ↗</a>.
+        </p>
+      </noscript>
     </form>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ПОДВАЛ -->
 <footer>
   <div class="container footer-content">
     <a href="#home" class="logo">FLUXX<span>.</span></a>
@@ -491,204 +674,335 @@
   </div>
 </footer>
 
-<!-- SCRIPTS -->
+<!-- СКРИПТЫ -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  /* Скрываем загрузчик сразу после готовности HTML. */
+  const loader = document.getElementById("fluxxLoader");
 
-  /* REVEAL ANIMATIONS */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      } else {
-        entry.target.classList.remove("visible");
-      }
+  if (loader) {
+    loader.classList.add("loader-hidden");
+
+    window.setTimeout(function () {
+      loader.remove();
+    }, 350);
+  }
+
+  /* Секции появляются один раз независимо от их высоты. */
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  if ("IntersectionObserver" in window && !reducedMotion.matches) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.remove("reveal-pending");
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0
     });
-  }, {
-    threshold: 0.12
-  });
 
-  document.querySelectorAll(".reveal").forEach(element => {
-    observer.observe(element);
-  });
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      observer.observe(element);
+      element.classList.add("reveal-pending");
+    });
 
+    reducedMotion.addEventListener("change", function (event) {
+      if (!event.matches) return;
 
-  /* THEME SWITCH */
+      observer.disconnect();
+
+      document.querySelectorAll(".reveal-pending").forEach(function (element) {
+        element.classList.remove("reveal-pending");
+      });
+    });
+  }
+
+  /* Переключение темы работает и при запрете localStorage. */
   const themeToggle = document.getElementById("themeToggle");
 
   if (themeToggle) {
-    const savedTheme = localStorage.getItem("fluxx-theme");
-
-    if (savedTheme === "light") {
-      document.body.classList.add("light-theme");
-      themeToggle.textContent = "☾";
-    } else {
-      themeToggle.textContent = "☀";
+    try {
+      document.body.classList.toggle(
+        "light-theme",
+        localStorage.getItem("fluxx-theme") === "light"
+      );
+    } catch (error) {
+      // Сохранение темы необязательно для работы сайта.
     }
 
-    themeToggle.addEventListener("click", function () {
-      document.body.classList.toggle("light-theme");
-
+    function updateThemeButton() {
       const isLight = document.body.classList.contains("light-theme");
 
       themeToggle.textContent = isLight ? "☾" : "☀";
 
-      localStorage.setItem(
-        "fluxx-theme",
-        isLight ? "light" : "dark"
+      themeToggle.setAttribute(
+        "aria-label",
+        isLight ? "Включить тёмную тему" : "Включить светлую тему"
       );
+    }
+
+    updateThemeButton();
+
+    themeToggle.addEventListener("click", function () {
+      document.body.classList.toggle("light-theme");
+      updateThemeButton();
+
+      try {
+        localStorage.setItem(
+          "fluxx-theme",
+          document.body.classList.contains("light-theme") ? "light" : "dark"
+        );
+      } catch (error) {
+        // Выбранная тема продолжит работать на текущей странице.
+      }
     });
   }
 
+  /* Мобильная навигация. */
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  const mobileMenu = window.matchMedia("(max-width: 950px)");
 
-  /* PROJECT FORM */
+  if (menuToggle && navLinks) {
+    function setMenu(open, restoreFocus) {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute(
+        "aria-label",
+        open ? "Закрыть меню" : "Открыть меню"
+      );
+
+      navLinks.classList.toggle("is-open", open);
+
+      if (restoreFocus) {
+        menuToggle.focus();
+      }
+    }
+
+    menuToggle.addEventListener("click", function () {
+      setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    navLinks.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        setMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        menuToggle.getAttribute("aria-expanded") === "true"
+      ) {
+        setMenu(false, true);
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest("header nav")) {
+        setMenu(false);
+      }
+    });
+
+    document.querySelector("header nav").addEventListener(
+      "focusout",
+      function (event) {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setMenu(false);
+        }
+      }
+    );
+
+    mobileMenu.addEventListener("change", function () {
+      const menuHadFocus = navLinks.contains(document.activeElement);
+
+      setMenu(false, mobileMenu.matches && menuHadFocus);
+    });
+  }
+
+  /* Форма: текст доступен даже при запрете копирования или всплывающих окон. */
   const projectForm = document.getElementById("projectForm");
 
   if (projectForm) {
+    const nameInput = document.getElementById("clientName");
+    const preview = document.getElementById("applicationPreview");
+    const applicationText = document.getElementById("applicationText");
+    const status = document.getElementById("formStatus");
+
+    async function copyApplication() {
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) {
+          throw new Error("Clipboard unavailable");
+        }
+
+        await navigator.clipboard.writeText(applicationText.value);
+
+        status.textContent =
+          "Заявка скопирована. Открой Telegram, вставь текст в чат и отправь сообщение.";
+      } catch (error) {
+        status.textContent =
+          "Не удалось скопировать автоматически. Текст заявки показан ниже — выдели его, скопируй и отправь в Telegram.";
+
+        applicationText.focus();
+        applicationText.select();
+      }
+    }
+
+    nameInput.addEventListener("input", function () {
+      nameInput.setCustomValidity("");
+    });
+
     projectForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const name = document.getElementById("clientName").value.trim();
-      const type = document.getElementById("clientType").value;
-      const budget = document.getElementById("clientBudget").value;
-      const message = document.getElementById("clientMessage").value.trim();
+      nameInput.setCustomValidity(
+        nameInput.value.trim() ? "" : "Введи своё имя."
+      );
 
-      const application =
+      if (!projectForm.reportValidity()) return;
+
+      applicationText.value =
         "Новая заявка FLUXX\n\n" +
-        "Имя: " + name + "\n" +
-        "Тип сайта: " + type + "\n" +
-        "Бюджет: " + budget + "\n" +
-        "Описание: " + (message || "Не указано");
+        "Имя: " + nameInput.value.trim() + "\n" +
+        "Тип сайта: " + document.getElementById("clientType").value + "\n" +
+        "Бюджет: " + document.getElementById("clientBudget").value + "\n" +
+        "Описание: " +
+        (document.getElementById("clientMessage").value.trim() || "Не указано");
+
+      preview.hidden = false;
+      status.textContent = "Заявка подготовлена. Копируем текст…";
+
+      // Запрашиваем копирование до переключения фокуса на Telegram.
+      void copyApplication();
 
       window.open(
         "https://t.me/bubkababki",
-        "_blank"
+        "_blank",
+        "noopener,noreferrer"
       );
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(application)
-          .then(function () {
-            alert("Заявка скопирована! Вставь её в открывшийся чат Telegram.");
-          })
-          .catch(function () {
-            alert("Telegram открыт. Скопируй текст заявки вручную.");
-          });
-      } else {
-        alert("Telegram открыт. Скопируй текст заявки вручную.");
-      }
     });
+
+    document.getElementById("copyApplication").addEventListener(
+      "click",
+      copyApplication
+    );
   }
 
-
-  /* CLICKABLE PROJECT CARDS */
-  document.querySelectorAll("#portfolio .project[data-url]").forEach(function (card) {
-
-    function openProject() {
-      window.open(card.dataset.url, "_blank", "noopener,noreferrer");
-    }
-
-    card.addEventListener("click", function (event) {
-      if (event.target.closest("a, button, input, select, textarea")) return;
-      openProject();
-    });
-
-    card.addEventListener("keydown", function (event) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openProject();
-      }
-    });
-
-  });
-
-
-  /* VIEW PROJECT OVERLAY */
+  /* Надпись при наведении на проект. Сами карточки — обычные ссылки. */
   document.querySelectorAll("#portfolio .project-image").forEach(function (image) {
-
     const overlay = document.createElement("div");
     overlay.className = "view-overlay";
+    overlay.setAttribute("aria-hidden", "true");
 
     const text = document.createElement("span");
     text.textContent = "VIEW PROJECT ↗";
 
     overlay.appendChild(text);
     image.appendChild(overlay);
-
   });
 
-
-  /* FLUXX CUSTOM CURSOR */
-  const canUseCustomCursor = window.matchMedia(
+  /* Кастомный курсор включается только после получения координат мыши. */
+  const cursorMedia = window.matchMedia(
     "(hover: hover) and (pointer: fine)"
-  ).matches;
+  );
 
-  if (canUseCustomCursor) {
-    document.body.classList.add("custom-cursor-active");
-    const cursor = document.createElement("div");
-    const ring = document.createElement("div");
+  const cursor = document.createElement("div");
+  const ring = document.createElement("div");
 
-    cursor.className = "fluxx-cursor";
-    ring.className = "fluxx-cursor-ring";
+  cursor.className = "fluxx-cursor";
+  ring.className = "fluxx-cursor-ring";
 
-    document.body.appendChild(ring);
-    document.body.appendChild(cursor);
+  cursor.setAttribute("aria-hidden", "true");
+  ring.setAttribute("aria-hidden", "true");
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
+  document.body.append(ring, cursor);
 
-    let ringX = mouseX;
-    let ringY = mouseY;
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+  let animationFrame = null;
 
-    document.addEventListener("mousemove", function (event) {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+  function stopCursor() {
+    document.body.classList.remove("custom-cursor-active");
 
-      cursor.style.left = mouseX + "px";
-      cursor.style.top = mouseY + "px";
-    });
+    if (animationFrame !== null) {
+      cancelAnimationFrame(animationFrame);
+    }
 
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
+    animationFrame = null;
+  }
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * .15;
+    ringY += (mouseY - ringY) * .15;
+
+    ring.style.left = ringX + "px";
+    ring.style.top = ringY + "px";
+
+    animationFrame = requestAnimationFrame(animateRing);
+  }
+
+  document.addEventListener("pointermove", function (event) {
+    if (
+      !cursorMedia.matches ||
+      reducedMotion.matches ||
+      event.pointerType !== "mouse"
+    ) {
+      stopCursor();
+      return;
+    }
+
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+
+    const active = document.body.classList.contains("custom-cursor-active");
+
+    if (!active) {
+      ringX = mouseX;
+      ringY = mouseY;
 
       ring.style.left = ringX + "px";
       ring.style.top = ringY + "px";
 
-      requestAnimationFrame(animateRing);
+      document.body.classList.add("custom-cursor-active");
+
+      animationFrame = requestAnimationFrame(animateRing);
     }
 
-    animateRing();
+    const hover = Boolean(
+      event.target.closest(
+        "a, button, summary, input, textarea, select, .service-card, .price-card"
+      )
+    );
 
-    document.querySelectorAll("a, button, .project, .service-card, .price-card").forEach(function (element) {
-      element.addEventListener("mouseenter", function () {
-        cursor.classList.add("hover");
-        ring.classList.add("hover");
-      });
+    cursor.classList.toggle("hover", hover);
+    ring.classList.toggle("hover", hover);
+  });
 
-      element.addEventListener("mouseleave", function () {
-        cursor.classList.remove("hover");
-        ring.classList.remove("hover");
-      });
-    });
-  }
+  document.documentElement.addEventListener("pointerleave", stopCursor);
+  window.addEventListener("blur", stopCursor);
 
-  /* FLUXX PRELOADER */
-  const loader = document.getElementById("fluxxLoader");
-  if (loader) {
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        loader.classList.add("loader-hidden");
-        setTimeout(function () { loader.remove(); }, 800);
-      }, 900);
-    });
-  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopCursor();
+    }
+  });
 
-  /* PROJECT DETAILS are revealed by hover/focus in CSS; card click remains a project link. */
+  cursorMedia.addEventListener("change", stopCursor);
+  reducedMotion.addEventListener("change", stopCursor);
 
-  /* HERO INTRO */
   const heroContent = document.querySelector(".hero-content");
-  if (heroContent) heroContent.classList.add("hero-animated");
 
+  if (heroContent) {
+    heroContent.classList.add("hero-animated");
+  }
 });
 </script>
 
