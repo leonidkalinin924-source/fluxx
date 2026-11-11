@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <meta name="robots" content="noindex">
+  <title>FLUXX — обложка сайта</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+    }
+
+    body {
+      color: #f5f5fa;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(
+          ellipse at 100% 10%,
+          rgba(104, 101, 255, .23),
+          transparent 60%
+        ),
+        #08090d;
+    }
+
+    main {
+      display: flex;
+      gap: 48px;
+      width: 1200px;
+      height: 630px;
+      padding: 58px 64px;
+    }
+
+    .content { flex: 1; min-width: 0; }
+    .brand { font-size: 50px; font-weight: 800; letter-spacing: -3px; }
+    .brand span, h1 span { color: #8c89ff; }
+
+    .eyebrow {
+      margin: 48px 0 18px;
+      color: #a9a6ff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 73px;
+      line-height: 1.07;
+      letter-spacing: -3px;
+    }
+
+    .description {
+      max-width: 600px;
+      margin: 24px 0 0;
+      color: #b5b7c9;
+      font-size: 22px;
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 33px;
+      color: #858798;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .visual {
+      align-self: center;
+      flex: 0 0 330px;
+      position: relative;
+      height: 350px;
+    }
+
+    .window {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #44425e;
+      border-radius: 20px;
+      background: #12131e;
+      transform: rotate(5deg);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, .35);
+      overflow: hidden;
+    }
+
+    .bar { height: 42px; padding: 17px; border-bottom: 1px solid #2c2d40; }
+
+    .dots {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e77d7d;
+      box-shadow: 13px 0 #d9bd73, 26px 0 #79be94;
+    }
+
+    .screen { padding: 29px 25px; }
+
+    .small {
+      width: 80px;
+      height: 6px;
+      border-radius: 8px;
+      background: #8c89ff;
+      margin-bottom: 23px;
+    }
+
+    .line {
+      height: 15px;
+      border-radius: 5px;
+      background: #efeff9;
+      margin-bottom: 10px;
+    }
+
+    .line.short { width: 72%; background: #8c89ff; }
+
+    .copy {
+      width: 84%;
+      height: 5px;
+      border-radius: 8px;
+      background: #5d6075;
+      margin-top: 18px;
+    }
+
+    .copy + .copy { width: 65%; margin-top: 8px; }
+
+    .button {
+      width: 95px;
+      height: 28px;
+      border-radius: 6px;
+      background: #6865ff;
+      margin-top: 23px;
+    }
+
+    .tiles { display: flex; gap: 11px; margin-top: 25px; }
+
+    .tiles i {
+      flex: 1;
+      height: 57px;
+      border: 1px solid #38384e;
+      border-radius: 8px;
+      background: #1c1c2d;
+    }
+
+    .phone {
+      position: absolute;
+      right: -13px;
+      bottom: -22px;
+      width: 108px;
+      height: 199px;
+      padding: 25px 12px 12px;
+      border: 5px solid #4a4864;
+      border-radius: 22px;
+      background: #10111b;
+      transform: rotate(-7deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+    }
+
+    .phone .line { height: 8px; margin-bottom: 7px; }
+    .phone .button { width: 56px; height: 19px; margin-top: 18px; }
+    .phone .copy { height: 4px; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="content">
+      <div class="brand">FLUXX<span>.</span></div>
+      <p class="eyebrow">DESIGN · DEVELOPMENT</p>
+      <h1>Сайты, которые<br><span>выделяются.</span></h1>
+      <p class="description">
+        Лендинги, сайты для бизнеса<br>
+        и индивидуальные проекты.
+      </p>
+      <p class="signature">ОТ ИДЕИ ДО ГОТОВОГО САЙТА</p>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="window">
+        <div class="bar">
+          <div class="dots"></div>
+        </div>
+
+        <div class="screen">
+          <div class="small"></div>
+          <div class="line"></div>
+          <div class="line short"></div>
+          <div class="copy"></div>
+          <div class="copy"></div>
+          <div class="button"></div>
+
+          <div class="tiles">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="line"></div>
+        <div class="line short"></div>
+        <div class="copy"></div>
+        <div class="copy"></div>
+        <div class="button"></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
