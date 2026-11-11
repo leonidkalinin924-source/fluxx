@@ -2634,3 +2634,365 @@ body.light-theme #support {
     padding-bottom: calc(95px + env(safe-area-inset-bottom, 0px));
   }
 }
+/* НОВЫЙ ПЕРВЫЙ ЭКРАН FLUXX */
+
+.hero.hero-v2 {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - 85px);
+  padding: 80px 0 95px;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 44px;
+}
+
+.hero-v2 .hero-content {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-v2 .eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1.8;
+  letter-spacing: 2px;
+}
+
+.hero-v2 h1 {
+  margin: 22px 0;
+  font-size: clamp(46px, 5.3vw, 76px);
+  line-height: 1.07;
+  letter-spacing: -3.5px;
+}
+
+.hero-v2 h1 span {
+  display: block;
+}
+
+.hero-v2 .hero-text {
+  max-width: 510px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hero-v2 .hero-buttons {
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.hero-v2 .hero-note {
+  margin-top: 32px;
+  font-size: 10px;
+  line-height: 1.8;
+  letter-spacing: 1.7px;
+}
+
+/* Композиция из проектов */
+
+.hero-showcase {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1.05;
+}
+
+.hero-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 5% -12% -2%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse,
+    rgba(104, 101, 255, .2),
+    transparent 70%
+  );
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.hero-browser {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, .24);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.hero-browser-main {
+  --mock-rotate: -5deg;
+  top: 22%;
+  left: 0;
+  z-index: 2;
+  width: 86%;
+  transform: rotate(-5deg);
+}
+
+.hero-browser-back {
+  --mock-rotate: 8deg;
+  top: 0;
+  right: 5%;
+  z-index: 1;
+  width: 61%;
+  transform: rotate(8deg);
+}
+
+.hero-browser-main:hover {
+  transform: translateY(-5px) rotate(-5deg);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, .3);
+}
+
+.hero-browser-back:hover {
+  transform: translateY(-5px) rotate(8deg);
+}
+
+.hero-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-height: 31px;
+  padding: 10px 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--gray);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero-window-dots {
+  flex: 0 0 5px;
+  width: 5px;
+  height: 5px;
+  margin-right: 13px;
+  border-radius: 50%;
+  background: #ef7b79;
+  box-shadow: 8px 0 #dfbd64, 16px 0 #74bb91;
+}
+
+.hero-window-arrow {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.hero-browser img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Телефон */
+
+.hero-phone {
+  --mock-rotate: 3deg;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  box-sizing: content-box;
+  width: 29%;
+  aspect-ratio: 390 / 844;
+  border: 7px solid #282836;
+  border-radius: 28px;
+  background: #282836;
+  transform: rotate(3deg);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, .32);
+}
+
+.hero-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 21px;
+  background: #fff;
+}
+
+.hero-phone-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 844px;
+  border: 0;
+  transform: scale(.35);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.hero-phone-notch {
+  position: absolute;
+  top: 6px;
+  left: 37%;
+  z-index: 2;
+  width: 26%;
+  height: 5px;
+  border-radius: 10px;
+  background: #282836;
+  pointer-events: none;
+}
+
+.hero-phone-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+}
+
+.hero-phone-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #f5f5fa;
+  color: #626279;
+  font-size: 10px;
+  text-align: center;
+}
+
+.hero-showcase-note {
+  position: absolute;
+  left: 3%;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 65%;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, .12);
+  color: var(--gray);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.hero-showcase-note > span {
+  color: var(--blue);
+  font-size: 19px;
+}
+
+/* Плавное появление */
+
+.hero-scene-ready .hero-browser,
+.hero-scene-ready .hero-phone {
+  animation: heroMockEnter .85s ease .12s backwards;
+}
+
+.hero-scene-ready .hero-browser-main {
+  animation-delay: .22s;
+}
+
+.hero-scene-ready .hero-phone {
+  animation-delay: .35s;
+}
+
+@keyframes heroMockEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(var(--mock-rotate, 0deg));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--mock-rotate, 0deg));
+  }
+}
+
+/* Светлая тема */
+
+body.light-theme .hero-browser {
+  box-shadow: 0 20px 55px rgba(35, 30, 70, .15);
+}
+
+body.light-theme .hero-showcase-note {
+  box-shadow: 0 10px 30px rgba(35, 30, 70, .08);
+}
+
+/* Планшеты */
+
+@media (max-width: 1000px) and (min-width: 701px) {
+  .hero-layout {
+    gap: 28px;
+  }
+
+  .hero-v2 h1 {
+    font-size: clamp(40px, 5.4vw, 54px);
+    letter-spacing: -2.5px;
+  }
+
+  .hero-v2 .btn {
+    padding: 14px 18px;
+    font-size: 12px;
+  }
+
+  .hero-showcase-note {
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+}
+
+/* Телефоны */
+
+@media (max-width: 700px) {
+  .hero.hero-v2 {
+    min-height: auto;
+    padding: 60px 0 75px;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .hero-v2 h1 {
+    font-size: clamp(39px, 10vw, 60px);
+    letter-spacing: -2px;
+  }
+
+  .hero-v2 .hero-text {
+    max-width: 540px;
+    font-size: 14px;
+  }
+
+  .hero-v2 .eyebrow {
+    font-size: 10px;
+  }
+
+  .hero-v2 .hero-note {
+    margin-top: 25px;
+  }
+
+  .hero-showcase {
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .hero-showcase-note {
+    font-size: 9px;
+    padding: 10px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene-ready .hero-browser,
+  .hero-scene-ready .hero-phone {
+    animation: none !important;
+  }
+}
