@@ -96,26 +96,141 @@
 <main>
 
 <!-- ПЕРВЫЙ ЭКРАН -->
-<section class="hero" id="home">
-  <div class="container hero-content reveal">
-    <span class="eyebrow">WEB DEVELOPMENT · DIGITAL DESIGN</span>
+<section class="hero hero-v2" id="home">
+  <div class="container hero-layout">
 
-    <h1>
-      Создаю сайты,<br>
-      которые <span>выделяются.</span>
-    </h1>
+    <!-- ТЕКСТ -->
+    <div class="hero-content reveal">
+      <span class="eyebrow">WEB DEVELOPMENT · DIGITAL DESIGN</span>
 
-    <p class="hero-text">
-      Современный дизайн, продуманная структура и внимание
-      к каждой детали. Превращаю идеи в полноценные цифровые проекты.
-    </p>
+      <h1>
+        Создаю сайты,<br>
+        которые <span>выделяются.</span>
+      </h1>
 
-    <div class="hero-buttons">
-      <a href="#portfolio" class="btn btn-primary">Мои проекты ↗</a>
-      <a href="#pricing" class="btn btn-outline">Услуги и цены</a>
+      <p class="hero-text">
+        Современный дизайн, продуманная структура и внимание
+        к каждой детали. Превращаю идеи в полноценные цифровые проекты.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary">
+          Мои проекты ↗
+        </a>
+
+        <a href="#pricing" class="btn btn-outline">
+          Услуги и цены
+        </a>
+      </div>
+
+      <p class="hero-note">
+        DESIGN · DEVELOPMENT · YOUR VISION
+      </p>
     </div>
 
-    <p class="hero-note">DESIGN · DEVELOPMENT · YOUR VISION</p>
+    <!-- ПРЕВЬЮ ПРОЕКТОВ -->
+    <div
+      class="hero-showcase reveal"
+      id="heroShowcase"
+      role="group"
+      aria-label="Примеры моих работ на компьютере и телефоне"
+    >
+
+      <!-- NORTH CUT НА ЗАДНЕМ ПЛАНЕ -->
+      <a
+        class="hero-browser hero-browser-back"
+        href="https://leonidkalinin924-source.github.io/mysite/#home"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть NORTH CUT в новой вкладке"
+      >
+        <div class="hero-window-bar" aria-hidden="true">
+          <span class="hero-window-dots"></span>
+          <span>NORTH CUT</span>
+          <span class="hero-window-arrow">↗</span>
+        </div>
+
+        <img
+          src="https://image.thum.io/get/width/1200/crop/800/noanimate/https://leonidkalinin924-source.github.io/mysite/"
+          alt="Главная страница сайта NORTH CUT"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        >
+      </a>
+
+      <!-- ОСНОВНОЕ ОКНО GLOSS GARAGE -->
+      <a
+        class="hero-browser hero-browser-main"
+        href="https://leonidkalinin924-source.github.io/gloss-garage/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Открыть GLOSS GARAGE в новой вкладке"
+      >
+        <div class="hero-window-bar" aria-hidden="true">
+          <span class="hero-window-dots"></span>
+          <span>GLOSS GARAGE</span>
+          <span class="hero-window-arrow">↗</span>
+        </div>
+
+        <img
+          src="https://image.thum.io/get/width/1200/crop/800/noanimate/https://leonidkalinin924-source.github.io/gloss-garage/"
+          alt="Главная страница сайта GLOSS GARAGE"
+          width="1200"
+          height="800"
+          loading="eager"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        >
+      </a>
+
+      <!-- МОБИЛЬНАЯ ВЕРСИЯ CLEAR SPACE -->
+      <div class="hero-phone">
+        <div class="hero-phone-screen" id="heroPhoneScreen">
+
+          <span
+            class="hero-phone-loading"
+            id="heroPhoneLoading"
+            aria-hidden="true"
+          >
+            Загрузка превью…
+          </span>
+
+          <iframe
+            class="hero-phone-frame"
+            id="heroPhoneFrame"
+            src="https://leonidkalinin924-source.github.io/clear-space-cleaning/"
+            title="Мобильная версия CLEAR SPACE"
+            width="390"
+            height="844"
+            loading="lazy"
+            tabindex="-1"
+            aria-hidden="true"
+            sandbox=""
+            referrerpolicy="no-referrer"
+            onload="this.dataset.heroLoaded='true'"
+          ></iframe>
+        </div>
+
+        <span class="hero-phone-notch" aria-hidden="true"></span>
+
+        <a
+          class="hero-phone-link"
+          href="https://leonidkalinin924-source.github.io/clear-space-cleaning/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Открыть CLEAR SPACE в новой вкладке"
+        ></a>
+      </div>
+
+      <div class="hero-showcase-note" aria-hidden="true">
+        <span>✦</span>
+        Дизайн · Разработка · Адаптация
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1697,6 +1812,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mobile.addEventListener("change", updateButton);
     updateButton();
+  }
+});
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const scene = document.getElementById("heroShowcase");
+  const screen = document.getElementById("heroPhoneScreen");
+  const frame = document.getElementById("heroPhoneFrame");
+  const loading = document.getElementById("heroPhoneLoading");
+
+  if (scene) {
+    scene.classList.add("hero-scene-ready");
+  }
+
+  if (!screen || !frame) return;
+
+  function fitHeroPhone() {
+    const scale = Math.min(
+      screen.clientWidth / 390,
+      screen.clientHeight / 844
+    );
+
+    if (scale > 0) {
+      frame.style.transform = "scale(" + scale + ")";
+    }
+  }
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(fitHeroPhone).observe(screen);
+  } else {
+    window.addEventListener("resize", fitHeroPhone);
+  }
+
+  fitHeroPhone();
+
+  let loaded = Boolean(frame.dataset.heroLoaded);
+
+  function finishLoading() {
+    loaded = true;
+
+    if (loading) {
+      loading.hidden = true;
+    }
+  }
+
+  frame.addEventListener("load", finishLoading, { once: true });
+
+  if (loaded) {
+    finishLoading();
   }
 });
 </script>
