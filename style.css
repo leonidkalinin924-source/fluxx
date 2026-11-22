@@ -3652,3 +3652,321 @@ body.light-theme #pricing .price-card .btn-primary {
     transform: none !important;
   }
 }
+/* FLUXX — новая форма карточек */
+
+/* ПОРТФОЛИО */
+#portfolio .projects {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+#portfolio .project {
+  border-radius: 5px 42px 5px 5px;
+}
+
+#portfolio .project-image {
+  border-radius: 2px;
+}
+
+#portfolio .project-info h3 {
+  font-size: clamp(26px, 3.4vw, 48px);
+}
+
+#portfolio .project .project-details {
+  max-height: none;
+  opacity: 1;
+  transform: none;
+  margin-top: 16px;
+}
+
+@media (min-width: 800px) {
+  #portfolio .project {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "bar   info"
+      "image info"
+      "image link";
+    padding: 16px;
+  }
+
+  #portfolio .project-browser { grid-area: bar; }
+
+  #portfolio .project-image,
+  #portfolio .projects[data-preview="phone"] .project-image {
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+    min-height: 290px;
+    margin: 0;
+    aspect-ratio: auto;
+  }
+
+  #portfolio .project-image > img {
+    position: absolute;
+    inset: 0;
+  }
+
+  #portfolio .project-info {
+    grid-area: info;
+    align-self: center;
+  }
+
+  #portfolio .project-open { grid-area: link; }
+}
+
+/* УСЛУГИ — МОЗАИКА С ЗАГНУТЫМ УГЛОМ */
+#services .service-card {
+  --paper: var(--tile-surface);
+  --ink: var(--white);
+  --fold: var(--tile-accent);
+  --cut: 46px;
+
+  border: 0;
+  border-radius: 4px;
+  padding: clamp(24px, 3vw, 42px);
+  background:
+    linear-gradient(var(--fold), var(--fold))
+      right bottom / var(--cut) var(--cut) no-repeat,
+    var(--paper);
+  clip-path: polygon(
+    0 0, 100% 0,
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, 0 100%
+  );
+}
+
+#services .service-card:nth-child(4n + 1) {
+  --paper: #c9baff;
+  --ink: #241941;
+  --fold: #8e72d4;
+}
+
+#services .service-card:nth-child(4n) {
+  --paper: #afe5d8;
+  --ink: #123b35;
+  --fold: #63aca0;
+}
+
+#services .service-card h3 {
+  color: var(--ink);
+  font-size: clamp(28px, 3.3vw, 46px);
+  margin: 48px 0 14px;
+}
+
+#services .service-card p {
+  padding: 0 20px 0 0;
+  border: 0;
+  color: var(--ink);
+  opacity: .86;
+}
+
+#services .service-number { color: var(--ink); }
+
+#services .service-card::before {
+  border-radius: 50%;
+  background: transparent;
+  border-color: var(--ink);
+}
+
+#services .service-card::after { background: var(--ink); }
+
+@media (min-width: 800px) {
+  #services .services-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  #services .service-card { grid-column: span 5; }
+
+  #services .service-card:nth-child(4n + 1),
+  #services .service-card:nth-child(4n) {
+    grid-column: span 7;
+  }
+}
+
+/* ЭТАПЫ — ВЕРТИКАЛЬНАЯ ДОРОЖКА */
+#process .process-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+#process .process-card,
+#process .process-card:hover {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  column-gap: 20px;
+  min-height: 0;
+  padding: 0 0 28px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+#process .process-card:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 44px;
+  bottom: 0;
+  left: 22px;
+  width: 2px;
+  background: var(--tile-border);
+}
+
+#process .process-number {
+  position: static;
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--tile-accent);
+  color: var(--tile-bg);
+  font: 800 16px/1 Manrope, sans-serif;
+  letter-spacing: 0;
+}
+
+#process .process-card h3 {
+  grid-column: 2;
+  margin: 8px 0;
+}
+
+#process .process-card p {
+  grid-column: 2;
+  max-width: 64ch;
+  margin: 0 0 8px;
+}
+
+#process .process-result {
+  grid-column: 2;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+/* ТАРИФЫ — БИЛЕТЫ С ЛИНИЕЙ ОТРЫВА */
+#pricing .price-card {
+  --tear-line: 86px;
+  padding: 26px 24px 18px;
+  border-radius: 18px 18px 4px 4px;
+  mask:
+    radial-gradient(circle at 0 calc(100% - var(--tear-line)),
+      transparent 10px, black 11px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--tear-line)),
+      transparent 10px, black 11px) right / 51% 100% no-repeat;
+}
+
+#pricing .price-card::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--tear-line) - 1px);
+  left: 11px;
+  right: 11px;
+  border-top: 2px dashed var(--tile-accent);
+  opacity: .55;
+  pointer-events: none;
+}
+
+#pricing .price-card ul { margin-bottom: 50px; }
+#pricing .price-card > .btn { border-radius: 999px; }
+
+#pricing .pricing-note {
+  border: 0;
+  border-block: 1px solid var(--tile-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ПОДДЕРЖКА — ПАПКИ С ВКЛАДКАМИ */
+#support .support-card {
+  border: 0;
+  border-radius: 0 0 18px 18px;
+  padding: 18px 24px 28px;
+  background: var(--tile-surface);
+  clip-path: polygon(
+    0 0, 54% 0, calc(54% + 20px) 20px,
+    100% 20px, 100% 100%, 0 100%
+  );
+}
+
+#support .support-card::after { content: none; }
+#support .support-card h3 { margin-top: 33px; }
+
+/* ОБО МНЕ — ВИЗИТКА */
+#about .about-box {
+  border-radius: 4px 64px 4px 4px;
+  border-left: 8px solid var(--tile-accent);
+}
+
+#about .about-points { gap: 0 16px; }
+
+#about .about-points div {
+  padding: 12px 0;
+  border: 0;
+  border-top: 1px solid var(--tile-border);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* ВОПРОСЫ — ЕДИНЫЙ СПИСОК */
+#faq .faq-list {
+  gap: 0;
+  border-block-start: 1px solid var(--tile-border);
+}
+
+#faq .faq-item,
+#faq .faq-item[open] {
+  border: 0;
+  border-bottom: 1px solid var(--tile-border);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+#faq .faq-item summary { padding-inline: 8px; }
+#faq .faq-item summary:focus-visible { outline-offset: -3px; }
+#faq .faq-icon { border-radius: 50%; }
+
+#faq .faq-item[open] .faq-icon {
+  color: var(--tile-bg);
+  background: var(--tile-accent);
+}
+
+/* КОНТАКТЫ — РЕПЛИКА И БЛАНК ЗАЯВКИ */
+#contact .contact-cta {
+  margin-bottom: 42px;
+  border: 0;
+  border-radius: 28px 28px 28px 0;
+  background: var(--tile-surface);
+}
+
+#contact .contact-cta::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 10px solid transparent;
+  border-color:
+    var(--tile-surface) transparent transparent var(--tile-surface);
+}
+
+#contact .project-form {
+  border: 1px solid var(--tile-border);
+  border-left: 8px solid var(--tile-accent);
+  border-radius: 2px 32px 2px 2px;
+}
+
+#contact .project-form :is(input, select, textarea) {
+  border-radius: 0;
+  border-width: 0 0 2px;
+}
+
+#contact .project-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--tile-accent);
+  outline-offset: 2px;
+}
