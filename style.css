@@ -4113,3 +4113,174 @@ body.light-theme #pricing .price-card .btn-primary {
 
   #faq .faq-item::details-content { transition: none; }
 }
+/* FLUXX — форма заявки */
+#contact .brief {
+  --mint: #b7eadb;
+  --ink: #163d36;
+  --pad: clamp(20px, 3.6vw, 46px);
+
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding: 0;
+  overflow: hidden;
+  scroll-margin-top: 96px;
+  border: 1px solid var(--tile-border);
+  border-radius: 28px;
+  background: var(--tile-bg);
+}
+
+#contact .brief-side,
+#contact .brief-main {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  min-width: 0;
+  padding: var(--pad);
+}
+
+#contact .brief-side {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 100% 100%,
+      #95cebf 0 30px, transparent 31px 49px,
+      #95cebf 50px 51px, transparent 52px 69px,
+      #95cebf 70px 71px, transparent 72px),
+    var(--mint);
+}
+
+#contact .brief-side h3 {
+  max-width: 9ch;
+  margin: 0 0 6px;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.03;
+  letter-spacing: -.055em;
+}
+
+#contact .brief .form-group {
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+}
+
+#contact .brief .form-group label,
+#contact .brief legend {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+#contact .brief .brief-side label { color: var(--ink); }
+
+#contact .brief .form-group :is(input, select, textarea) {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--tile-border);
+  border-radius: 12px;
+  color: var(--white);
+  background-color: var(--tile-surface);
+  font: inherit;
+  font-size: 16px;
+}
+
+#contact .brief .brief-side select {
+  color: var(--ink);
+  background: #f0fcf7;
+  border-color: #81aa9e;
+}
+
+#contact .brief .brief-side select:focus-visible {
+  outline-color: var(--ink);
+}
+
+#contact .brief small {
+  color: var(--gray);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Выбор бюджета */
+#contact .brief-budget {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#contact .brief-budget legend {
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+#contact .brief-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#contact .brief-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--tile-border);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#contact .brief-options input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  accent-color: #265d50;
+}
+
+#contact .brief-options label:has(:checked) {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--ink);
+}
+
+#contact .brief-options label:focus-within {
+  outline: 2px solid var(--tile-accent);
+  outline-offset: 2px;
+}
+
+/* Кнопка и готовая заявка */
+#contact .brief .form-submit {
+  min-height: 52px;
+  border-radius: 12px;
+  background: var(--mint);
+  color: var(--ink);
+  white-space: normal;
+}
+
+#contact .brief .form-note {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 13px;
+}
+
+#contact .brief .application-preview {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: var(--pad);
+  border-top: 1px dashed var(--tile-accent);
+}
+
+@media (max-width: 760px) {
+  #contact .brief {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 20px;
+  }
+
+  #contact .brief-side { gap: 16px; }
+  #contact .brief-side h3 { max-width: none; }
+}
