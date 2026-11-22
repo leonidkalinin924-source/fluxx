@@ -28,7 +28,7 @@
 <meta name="twitter:title" content="FLUXX — сайты, которые выделяются">
 <meta name="twitter:description" content="Дизайн и разработка сайтов для бизнеса. От идеи до готового сайта.">
 <meta name="twitter:image" content="https://image.thum.io/get/width/1200/crop/630/noanimate/https://leonidkalinin924-source.github.io/fluxx/share.html">
-<link rel="stylesheet" href="style.css?v=faq-3">
+<link rel="stylesheet" href="style.css?v=brief-4">
 
   <script>
     document.documentElement.classList.add("js");
@@ -988,114 +988,101 @@
       </a>
     </div>
 
-    <form class="project-form" id="projectForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="clientName">Как тебя зовут?</label>
+  <form class="project-form brief" id="projectForm" aria-labelledby="briefTitle">
+  <div class="brief-side">
+    <h3 id="briefTitle">Заявка на сайт</h3>
 
-          <input
-            type="text"
-            id="clientName"
-            name="name"
-            autocomplete="name"
-            placeholder="Твоё имя"
-            required
-          >
-        </div>
+    <div class="form-group">
+      <label for="clientType">Какой сайт нужен?</label>
+      <select id="clientType" name="type" required>
+        <option value="" disabled selected>Выбери тип сайта</option>
+        <option value="Landing Page">Лендинг</option>
+        <option>Сайт для бизнеса</option>
+        <option>Интернет-магазин</option>
+        <option>Индивидуальный проект</option>
+      </select>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <label for="clientType">Какой сайт нужен?</label>
+  <div class="brief-main">
+    <div class="form-group">
+      <label for="clientName">Как тебя зовут?</label>
+      <input id="clientName" name="name" type="text"
+             autocomplete="name" placeholder="Твоё имя" required>
+    </div>
 
-          <select id="clientType" name="type" required>
-            <option value="" disabled selected>Выбери тип сайта</option>
-            <option>Landing Page</option>
-            <option>Сайт для бизнеса</option>
-            <option>Интернет-магазин</option>
-            <option>Индивидуальный проект</option>
-          </select>
-        </div>
+    <fieldset class="brief-budget">
+      <legend>Планируемый бюджет</legend>
+
+      <div class="brief-options">
+        <label>
+          <input type="radio" name="budget" value="4 000 – 8 000 ₽" required>
+          4–8 тыс. ₽
+        </label>
+        <label>
+          <input type="radio" name="budget" value="8 000 – 15 000 ₽">
+          8–15 тыс. ₽
+        </label>
+        <label>
+          <input type="radio" name="budget" value="15 000 – 30 000 ₽">
+          15–30 тыс. ₽
+        </label>
+        <label>
+          <input type="radio" name="budget" value="Более 30 000 ₽">
+          Более 30 тыс. ₽
+        </label>
+        <label>
+          <input type="radio" name="budget" value="Пока не определился">
+          Пока не определился
+        </label>
       </div>
+    </fieldset>
 
-      <div class="form-group">
-        <label for="clientBudget">Планируемый бюджет</label>
+    <div class="form-group">
+      <label for="clientMessage">
+        Что должен делать сайт? <small>Необязательно</small>
+      </label>
+      <textarea id="clientMessage" name="message" rows="3"
+                placeholder="Например, показывать мои работы и принимать записи"></textarea>
+    </div>
 
-        <select id="clientBudget" name="budget" required>
-          <option value="" disabled selected>Выбери бюджет</option>
-          <option>4 000 – 8 000 ₽</option>
-          <option>8 000 – 15 000 ₽</option>
-          <option>15 000 – 30 000 ₽</option>
-          <option>Более 30 000 ₽</option>
-          <option>Пока не определился</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="clientMessage">Расскажи о своей идее</label>
-
-        <textarea
-          id="clientMessage"
-          name="message"
-          rows="4"
-          placeholder="Какой сайт хочешь? Что на нём должно быть?"
-        ></textarea>
-      </div>
-
+    <div>
       <button type="submit" class="btn btn-primary form-submit">
         Обсудить проект в Telegram ↗
       </button>
-
-      <p class="form-note" id="formStatus" role="status" aria-live="polite">
-        Подготовим текст заявки — останется вставить его в Telegram и отправить.
+      <p class="form-note" id="formStatus" role="status">
+        Подготовим текст и откроем Telegram. Вставь заявку в чат и отправь её.
       </p>
-
-      <div class="application-preview" id="applicationPreview" hidden>
-        <div class="form-group">
-          <label for="applicationText">Текст твоей заявки</label>
-
-          <textarea
-            id="applicationText"
-            rows="8"
-            readonly
-            aria-describedby="applicationHint"
-          ></textarea>
-        </div>
-
-        <p class="form-note" id="applicationHint">
-          Если копирование недоступно,
-          выдели и скопируй текст вручную.
-        </p>
-
-        <div class="application-actions">
-          <button
-            type="button"
-            class="btn btn-outline"
-            id="copyApplication"
-          >
-            Скопировать текст
-          </button>
-
-          <a
-            class="btn btn-primary"
-            href="https://t.me/bubkababki"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Открыть Telegram ↗
-          </a>
-        </div>
-      </div>
-
       <noscript>
         <p class="form-note">
-          Для подготовки заявки включи JavaScript или напиши напрямую
-          <a
-            href="https://t.me/bubkababki"
-            target="_blank"
-            rel="noopener noreferrer"
-          >в Telegram ↗</a>.
+          Напиши напрямую <a href="https://t.me/bubkababki">в Telegram ↗</a>.
         </p>
       </noscript>
-    </form>
+    </div>
+  </div>
+
+  <div class="application-preview" id="applicationPreview" hidden>
+    <div class="form-group">
+      <label for="applicationText">Текст твоей заявки</label>
+      <textarea id="applicationText" rows="6" readonly
+                aria-describedby="applicationHint"></textarea>
+    </div>
+
+    <p class="form-note" id="applicationHint">
+      Можно скопировать текст кнопкой или выделить его вручную.
+    </p>
+
+    <div class="application-actions">
+      <button type="button" class="btn btn-outline" id="copyApplication">
+        Скопировать текст
+      </button>
+      <a class="btn btn-primary" href="https://t.me/bubkababki"
+         target="_blank" rel="noopener noreferrer">
+        Открыть Telegram ↗
+      </a>
+    </div>
+  </div>
+</form>
   </div>
 </section>
 
@@ -1306,7 +1293,7 @@ document.addEventListener("DOMContentLoaded", function () {
 "Тариф: " + (document.getElementById("clientPlan")?.value || "Пока не выбран") + "\n" +
         "Имя: " + nameInput.value.trim() + "\n" +
         "Тип сайта: " + document.getElementById("clientType").value + "\n" +
-        "Бюджет: " + document.getElementById("clientBudget").value + "\n" +
+        "Бюджет: " + projectForm.elements.namedItem("budget").value + "\n" +
         "Описание: " +
         (document.getElementById("clientMessage").value.trim() || "Не указано");
 
@@ -1498,7 +1485,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   group.append(label, planSelect);
-  form.prepend(group);
+siteType.closest(".form-group").before(group);
 
   /* После изменений старую заявку нужно подготовить заново. */
   function invalidateApplication() {
