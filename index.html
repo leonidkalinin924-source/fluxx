@@ -28,7 +28,7 @@
 <meta name="twitter:title" content="FLUXX — сайты, которые выделяются">
 <meta name="twitter:description" content="Дизайн и разработка сайтов для бизнеса. От идеи до готового сайта.">
 <meta name="twitter:image" content="https://image.thum.io/get/width/1200/crop/630/noanimate/https://leonidkalinin924-source.github.io/fluxx/share.html">
-<link rel="stylesheet" href="style.css?v=about-mobile-1">
+<link rel="stylesheet" href="style.css?v=portfolio-order-1">
 
   <script>
     document.documentElement.classList.add("js");
@@ -1357,7 +1357,10 @@ document.addEventListener("DOMContentLoaded", function () {
       applicationText.value =
        "Новая заявка FLUXX\n\n" +
 "Тариф: " + (document.getElementById("clientPlan")?.value || "Пока не выбран") + "\n" +
-        "Имя: " + nameInput.value.trim() + "\n" +
+      (projectForm.elements.example?.value
+  ? "Пример сайта: " + projectForm.elements.example.value + "\n"
+  : "") +
+"Имя: " + nameInput.value.trim() + "\n" +
         "Тип сайта: " + document.getElementById("clientType").value + "\n" +
         "Бюджет: " + projectForm.elements.namedItem("budget").value + "\n" +
         "Описание: " +
@@ -1518,117 +1521,111 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("projectForm");
-  const siteType = document.getElementById("clientType");
+  const type = document.getElementById("clientType");
+  if (!form || !type) return;
 
-  if (!form || !siteType || document.getElementById("clientPlan")) {
-    return;
+  type.add(new Option("Помоги определиться"));
+
+  type.closest(".form-group").insertAdjacentHTML("afterend", `
+    <p class="brief-choice" id="planNote" hidden>
+      Выбран тариф <output id="clientPlan"></output>
+    </p>
+    <div class="brief-choice" id="exampleNote" hidden>
+      <span>Мне понравился <output name="example" id="clientExample"></output></span>
+      <button type="button" aria-label="Убрать пример из заявки">Убрать</button>
+    </div>
+  `);
+
+  const plan = form.querySelector("#clientPlan");
+  const example = form.querySelector("#clientExample");
+  const planNote = form.querySelector("#planNote");
+  const exampleNote = form.querySelector("#exampleNote");
+  const preview = form.querySelector("#applicationPreview");
+  const status = form.querySelector("#formStatus");
+
+  function invalidate() {
+    if (preview.hidden) return;
+    preview.hidden = true;
+    status.textContent = "Заявка изменилась. Подготовь её ещё раз перед отправкой.";
   }
 
-  const plans = {
+  function updateNotes() {
+    planNote.hidden = !plan.value;
+    exampleNote.hidden = !example.value;
+
+    const notes = [planNote, exampleNote].filter(note => !note.hidden);
+    type.setAttribute("aria-describedby", notes.map(note => note.id).join(" "));
+    invalidate();
+  }
+
+  function focusForm() {
+    type.focus({ preventScroll: true });
+    form.scrollIntoView({ block: "start" });
+  }
+
+  const types = {
     "Landing Page": "Landing Page",
     "Business": "Сайт для бизнеса",
     "Custom": "Индивидуальный проект"
   };
 
-  /* Добавляем выбор тарифа в начало формы. */
-  const group = document.createElement("div");
-  group.className = "form-group";
+  for (const card of document.querySelectorAll("#pricing .price-card")) {
+    const name = card.querySelector("h3").textContent.trim();
+    const link = card.querySelector("a.btn");
+    if (!link || !Object.hasOwn(types, name)) continue;
 
-  const label = document.createElement("label");
-  label.htmlFor = "clientPlan";
-  label.textContent = "Выбранный тариф";
+    link.href = "#projectForm";
+    link.addEventListener("click", event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
 
-  const planSelect = document.createElement("select");
-  planSelect.id = "clientPlan";
-  planSelect.name = "plan";
-
-  planSelect.add(new Option("Пока не определился", ""));
-
-  Object.keys(plans).forEach(function (plan) {
-    planSelect.add(new Option(plan, plan));
-  });
-
-  group.append(label, planSelect);
-siteType.closest(".form-group").before(group);
-
-  /* После изменений старую заявку нужно подготовить заново. */
-  function invalidateApplication() {
-    const preview = document.getElementById("applicationPreview");
-    const status = document.getElementById("formStatus");
-
-    if (preview && !preview.hidden) {
-      preview.hidden = true;
-
-      if (status) {
-        status.textContent =
-          "Данные изменились. Нажми «Обсудить проект в Telegram», чтобы подготовить новую заявку.";
-      }
-    }
-  }
-
-  /* Синхронизируем тариф с выбранным типом сайта. */
-  function syncPlanFromType() {
-    planSelect.value = Object.keys(plans).find(function (plan) {
-      return plans[plan] === siteType.value;
-    }) || "";
-  }
-
-  syncPlanFromType();
-
-  planSelect.addEventListener("change", function () {
-    if (planSelect.value) {
-      siteType.value = plans[planSelect.value];
-    }
-
-    invalidateApplication();
-  });
-
-  siteType.addEventListener("change", function () {
-    syncPlanFromType();
-    invalidateApplication();
-  });
-
-  /* Подключаем кнопки трёх тарифов. */
-  document.querySelectorAll("#pricing .price-card").forEach(function (card) {
-    const title = card.querySelector("h3");
-    const button = card.querySelector('a.btn[href="#contact"]');
-    const plan = title ? title.textContent.trim() : "";
-
-    if (
-      !button ||
-      !Object.prototype.hasOwnProperty.call(plans, plan)
-    ) {
-      return;
-    }
-
-    button.href = "#projectForm";
-
-    button.addEventListener("click", function (event) {
-      if (
-        event.button !== 0 ||
-        event.ctrlKey ||
-        event.metaKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-
-      planSelect.value = plan;
-      siteType.value = plans[plan];
-
-      invalidateApplication();
-
-      requestAnimationFrame(function () {
-        planSelect.focus({ preventScroll: true });
-      });
+      plan.value = name;
+      type.value = types[name];
+      updateNotes();
+      requestAnimationFrame(() => type.focus({ preventScroll: true }));
     });
+  }
+
+  type.addEventListener("change", () => {
+    if (types[plan.value] !== type.value) plan.value = "";
+    updateNotes();
   });
 
-  form.addEventListener("input", invalidateApplication);
-  form.addEventListener("change", invalidateApplication);
+  exampleNote.querySelector("button").addEventListener("click", () => {
+    example.value = "";
+    updateNotes();
+    type.focus({ preventScroll: true });
+  });
+
+  // К этому моменту скрипт портфолио уже создал ссылки на демо.
+  requestAnimationFrame(() => {
+    for (const demo of document.querySelectorAll("#portfolio .project-open")) {
+      const card = demo.closest(".project");
+      const name = card.querySelector("h3").textContent.trim();
+
+      const actions = document.createElement("div");
+      actions.className = "project-actions";
+
+      const order = document.createElement("button");
+      order.type = "button";
+      order.className = "project-order";
+      order.textContent = "Хочу похожий сайт";
+      order.setAttribute("aria-label", "Хочу похожий сайт — " + name);
+
+      demo.replaceWith(actions);
+      actions.append(demo, order);
+
+      order.addEventListener("click", () => {
+        example.value = name;
+        updateNotes();
+        focusForm();
+      });
+    }
+  });
+
+  form.addEventListener("input", invalidate);
+  form.addEventListener("change", invalidate);
 });
 </script>
   <script>
