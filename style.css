@@ -4302,3 +4302,64 @@ body.light-theme #pricing .price-card .btn-primary {
     letter-spacing: -0.04em;
   }
 }
+/* Два действия под каждым проектом */
+#portfolio .project-actions {
+  grid-area: link;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0 24px;
+  padding: 14px 0 20px;
+  border-top: 1px solid var(--tile-border);
+}
+
+#portfolio .project-actions .project-open {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#portfolio .project-order {
+  position: relative;
+  z-index: 21;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #c9baff;
+  color: #241941;
+  font: 750 14px/1.3 Manrope, sans-serif;
+  cursor: pointer;
+}
+
+/* Тариф и выбранный пример на мятной панели формы */
+#contact .brief-choice {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid #81aa9e;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+#contact .brief-choice output {
+  font-weight: 800;
+}
+
+#contact .brief-choice button {
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
