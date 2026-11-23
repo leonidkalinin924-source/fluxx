@@ -4363,3 +4363,51 @@ body.light-theme #pricing .price-card .btn-primary {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Экраны проектов */
+#portfolio .case-header { grid-area: bar; min-width: 0; }
+#portfolio .case-controls {
+  position: relative;
+  z-index: 21;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 12px 8px;
+}
+#portfolio .case-controls button {
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--gray);
+  font: 700 13px/1.3 Manrope, sans-serif;
+  cursor: pointer;
+}
+#portfolio .case-controls button[aria-pressed="true"] {
+  border-color: var(--tile-border);
+  background: var(--tile-surface);
+  color: var(--tile-accent);
+}
+#portfolio .case-screen { z-index: 21; }
+#portfolio .projects[data-preview="desktop"] .case-screen { background: #11131e; }
+#portfolio .projects[data-preview="desktop"] [data-case="clear"] { background: #f3f7fc; }
+#portfolio .project .case-screen > img,
+#portfolio .project:is(:hover, :focus-within) .case-screen > img {
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  transform: none;
+}
+#portfolio .case-screen .view-overlay { display: none; }
+#portfolio .case-screen-link {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  touch-action: pan-y pinch-zoom;
+}
+#pricing .price-card > .section-description {
+  color: var(--white);
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.4;
+}
