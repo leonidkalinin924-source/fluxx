@@ -4284,3 +4284,21 @@ body.light-theme #pricing .price-card .btn-primary {
   #contact .brief-side { gap: 16px; }
   #contact .brief-side h3 { max-width: none; }
 }
+#about .about-grid > div:first-child {
+  container-type: inline-size;
+}
+
+#about .section-title {
+  font-size: clamp(1.75rem, 10cqi, var(--about-title-max, 3.75rem));
+}
+
+@media (max-width: 950px) {
+  #about .about-grid {
+    padding-inline: 0;
+    --about-title-max: 3rem;
+  }
+
+  #about .section-title {
+    letter-spacing: -0.04em;
+  }
+}
