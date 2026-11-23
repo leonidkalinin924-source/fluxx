@@ -1089,18 +1089,18 @@ document.addEventListener("DOMContentLoaded", function () {
       loader.remove();
     }, 350);
   }
-  /* Появление секций */
+   /* Появление секций */
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if ("IntersectionObserver" in window && "animate" in Element.prototype) {
     requestAnimationFrame(() => {
       const items = document.querySelectorAll(
-        "#home h1, .hero-showcase, .section-title, #briefTitle, " +
-        ".project-image, .service-card, .price-card, .process-card, " +
-        ".support-card, .about-box, .pricing-note, .faq-item"
+        "#home h1, .hero-showcase, .section-title, #briefTitle, .project-image, " +
+        ".service-card, .price-card, .process-card, .support-card, .about-box, " +
+        ".pricing-note, .faq-item"
       );
 
-      const playing = new Map();
+      const shown = new Map();
       let lastY = window.scrollY;
       let direction = 1;
 
@@ -1111,15 +1111,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       function enter(item, d) {
-        const timing = {
-          duration: 480,
-          easing: "cubic-bezier(.22,.75,.25,1)"
-        };
+        const timing = { duration: 1050, easing: "ease-in-out" };
 
-        // Заголовок раскрывается по диагонали.
         if (item.matches("h1, h2, #briefTitle")) {
           const angle = d > 0 ? 166 : 346;
-          const mask = `linear-gradient(${angle}deg, black 44%, transparent 54%)`;
+          const mask = `linear-gradient(${angle}deg, black 40%, rgb(0 0 0 / .55) 62%)`;
 
           return item.animate({
             maskImage: [mask, mask],
@@ -1127,77 +1123,89 @@ document.addEventListener("DOMContentLoaded", function () {
             maskPosition: d > 0
               ? ["0% 100%", "0% 0%"]
               : ["0% 0%", "0% 100%"]
-          }, { duration: 560, easing: "ease-in-out" });
+          }, { duration: 1200, easing: "ease-in-out" });
         }
 
-        // Фотография или телефон доворачивается внутри рамки проекта.
         if (item.matches(".project-image")) {
           const photo = item.closest('[data-preview="phone"]')
             ? item.querySelector(".phone-shell")
             : item.querySelector("img:not([hidden]), .project-preview-fallback:not([hidden])");
 
           return (photo || item).animate([
-            { scale: "1.12", rotate: `${d * 2.5}deg` },
+            { scale: "1.07", rotate: `${d * 1.5}deg` },
             { scale: "1", rotate: "0deg" }
           ], timing);
         }
 
-        // Номер этапа чуть проскакивает конечное положение и возвращается.
         if (item.matches(".process-card")) {
           return item.querySelector(".process-number").animate([
-            { rotate: `${-d * 32}deg`, scale: ".78" },
-            { rotate: `${d * 6}deg`, scale: "1.08", offset: .65 },
+            { rotate: `${-d * 18}deg`, scale: ".9" },
             { rotate: "0deg", scale: "1" }
           ], timing);
         }
 
-        // У вопроса подсвечивается край, сам текст остаётся на месте.
         if (item.matches(".faq-item")) {
           return item.querySelector("summary").animate([
-            { boxShadow: `inset ${d * 7}px 0 var(--tile-accent)` },
+            { boxShadow: `inset ${d * 5}px 0 var(--tile-accent)` },
             { boxShadow: "inset 0 0 0 transparent" }
           ], timing);
         }
 
-        // Карточка входит под небольшим углом и выравнивается.
         return item.animate([
-          { translate: `0 ${d * 20}px`, rotate: `${-d * 1.4}deg`, scale: ".975" },
-          { translate: `0 ${-d * 3}px`, rotate: `${d * .25}deg`, offset: .72 },
+          { translate: `0 ${d * 14}px`, rotate: `${-d}deg`, scale: ".985" },
           { translate: "0 0", rotate: "0deg", scale: "1" }
         ], timing);
       }
 
-      const observer = new IntersectionObserver(entries => {
+      // Один запуск за проход через экран.
+      const onEnter = new IntersectionObserver(entries => {
         if (reducedMotion.matches) return;
         readDirection();
 
-        for (const entry of entries) {
-          const item = entry.target;
+        for (const { target, isIntersecting } of entries) {
+          if (!isIntersecting || shown.has(target)) continue;
 
-          if (!entry.isIntersecting) {
-            playing.get(item)?.cancel();
-            playing.delete(item);
-          } else if (
-            entry.intersectionRatio >= .12 &&
-            !playing.has(item) &&
-            !item.matches(":focus-within")
-          ) {
-            playing.set(item, enter(item, direction));
-          }
+          const animation = target.matches(":focus-within")
+            ? null
+            : enter(target, direction);
+
+          shown.set(target, animation);
         }
-      }, { threshold: [0, .12], rootMargin: "-64px 0px -12px" });
+      });
+
+      // Разрешаем следующий запуск только после полного выхода с запасом.
+      const onLeave = new IntersectionObserver(entries => {
+        for (const { target, isIntersecting } of entries) {
+          if (isIntersecting) continue;
+          shown.get(target)?.cancel();
+          shown.delete(target);
+        }
+      }, { rootMargin: "120px 0px" });
 
       function syncMotion() {
-        observer.disconnect();
-        for (const animation of playing.values()) animation.cancel();
-        playing.clear();
+        onEnter.disconnect();
+        onLeave.disconnect();
+
+        for (const animation of shown.values()) animation?.cancel();
+        shown.clear();
         window.removeEventListener("scroll", readDirection);
 
         if (reducedMotion.matches) return;
 
         lastY = window.scrollY;
         window.addEventListener("scroll", readDirection, { passive: true });
-        items.forEach(item => observer.observe(item));
+
+        for (const item of items) {
+          const rect = item.getBoundingClientRect();
+
+          // Уже видимые при загрузке блоки сразу можно читать.
+          if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            shown.set(item, null);
+          }
+
+          onEnter.observe(item);
+          onLeave.observe(item);
+        }
       }
 
       syncMotion();
